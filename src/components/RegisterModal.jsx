@@ -384,3 +384,4 @@ export function RegisterModal({ isOpen, initialRole = 'Institution', onClose, on
   );
 }
 export default RegisterModal;
+

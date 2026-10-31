@@ -10,10 +10,23 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <script>
+      // If hosted statically on GitHub Pages directly from main branch root, redirect to compiled docs
+      if (window.location.hostname.endsWith('github.io')) {
+        var path = window.location.pathname;
+        if (!path.includes('/docs') && !path.includes('/assets')) {
+          var targetBase = path.endsWith('/') ? path : path + '/';
+          // Ensure we don't loop if docs doesn't exist
+          if (!window.sessionStorage.getItem('gh_redirected')) {
+            window.sessionStorage.setItem('gh_redirected', '1');
+            window.location.replace(targetBase + 'docs/');
+          }
+        }
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
-

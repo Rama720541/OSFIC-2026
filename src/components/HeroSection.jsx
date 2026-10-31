@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowRight, Play, ShieldAlert, CheckCircle, Zap, RefreshCw, Cpu, Award, Sparkles } from 'lucide-react';
+import { ArrowRight, Play, ShieldAlert, CheckCircle, Zap, RefreshCw, Cpu, Award } from 'lucide-react';
 
 export function HeroSection({ onOpenPilotModal, onScrollToDemo }) {
   const [resolved, setResolved] = useState(false);
@@ -10,7 +10,7 @@ export function HeroSection({ onOpenPilotModal, onScrollToDemo }) {
     setTimeout(() => {
       setResolving(false);
       setResolved(true);
-    }, 900);
+    }, 800);
   };
 
   const handleReset = () => {
@@ -26,7 +26,7 @@ export function HeroSection({ onOpenPilotModal, onScrollToDemo }) {
             {/* Eyebrow Tag */}
             <div className="mb-4">
               <span className="badge-osfic">
-                <span className="badge rounded-pill px-2 py-0" style={{ background: 'linear-gradient(135deg, #0284c7, #2563eb)', color: '#fff', fontSize: '0.7rem' }}>
+                <span className="badge bg-primary text-white rounded-pill px-2 py-0" style={{ fontSize: '0.7rem' }}>
                   GOV. INITIATIVE
                 </span>
                 <span className="fw-semibold">OSFIC PS-040 Approved | Academic Resource & Timetable Intelligence</span>
@@ -50,7 +50,7 @@ export function HeroSection({ onOpenPilotModal, onScrollToDemo }) {
             <div className="d-flex flex-wrap gap-3 align-items-center mb-5">
               <button
                 onClick={onOpenPilotModal}
-                className="btn btn-primary-enterprise d-flex align-items-center gap-2 px-4 py-3 fs-6 glow-blue"
+                className="btn btn-primary-enterprise d-flex align-items-center gap-2 px-4 py-3 fs-6"
               >
                 <span>Deploy at Your Institution</span>
                 <ArrowRight size={18} />
@@ -60,7 +60,7 @@ export function HeroSection({ onOpenPilotModal, onScrollToDemo }) {
                 onClick={onScrollToDemo}
                 className="btn btn-outline-enterprise d-flex align-items-center gap-2 px-4 py-3 fs-6"
               >
-                <Play size={18} className="text-cyan fill-cyan" />
+                <Play size={18} className="text-primary fill-primary" />
                 <span>Explore Interactive Demo</span>
               </button>
             </div>
@@ -69,19 +69,19 @@ export function HeroSection({ onOpenPilotModal, onScrollToDemo }) {
             <div className="row g-3 pt-3 border-top" style={{ borderColor: 'var(--nf-border)' }}>
               <div className="col-sm-4">
                 <div className="d-flex align-items-center gap-2">
-                  <div className="text-cyan fw-bolder fs-3 font-mono">0%</div>
+                  <div className="text-primary fw-bolder fs-3 font-mono">0%</div>
                   <div className="small text-muted lh-sm">Hard-Constraint Clashes</div>
                 </div>
               </div>
               <div className="col-sm-4">
                 <div className="d-flex align-items-center gap-2">
-                  <div className="text-cyan fw-bolder fs-3 font-mono">&lt; 90s</div>
+                  <div className="text-primary fw-bolder fs-3 font-mono">&lt; 90s</div>
                   <div className="small text-muted lh-sm">Faculty Proxy Dispatch</div>
                 </div>
               </div>
               <div className="col-sm-4">
                 <div className="d-flex align-items-center gap-2">
-                  <div className="text-cyan fw-bolder fs-3 font-mono">42%</div>
+                  <div className="text-primary fw-bolder fs-3 font-mono">42%</div>
                   <div className="small text-muted lh-sm">Lab Capacity Boost</div>
                 </div>
               </div>
@@ -90,16 +90,16 @@ export function HeroSection({ onOpenPilotModal, onScrollToDemo }) {
 
           {/* Right Column: Live Interactive Constraint Simulator */}
           <div className="col-lg-5">
-            <div className="card-enterprise p-4 shadow-lg position-relative border" style={{ borderColor: 'var(--nf-border-bright)' }}>
+            <div className="card-enterprise p-4 shadow-lg position-relative border" style={{ borderColor: 'var(--nf-border)' }}>
               {/* Card Header */}
               <div className="d-flex align-items-center justify-content-between mb-3 pb-3 border-bottom" style={{ borderColor: 'var(--nf-border)' }}>
                 <div className="d-flex align-items-center gap-2">
-                  <div className="p-1 rounded-2" style={{ background: 'rgba(56, 189, 248, 0.15)' }}>
-                    <Cpu size={18} className="text-cyan" />
+                  <div className="p-1 rounded-2 bg-primary bg-opacity-10">
+                    <Cpu size={18} className="text-primary" />
                   </div>
                   <div>
-                    <span className="fw-bold small text-uppercase tracking-wider font-mono">NEURAL CSP ENGINE</span>
-                    <span className="badge bg-primary bg-opacity-20 text-cyan rounded-pill ms-2 font-mono" style={{ fontSize: '0.65rem' }}>v4.2</span>
+                    <span className="fw-bold small text-uppercase tracking-wider font-mono">Live Constraint Engine</span>
+                    <span className="badge bg-primary-subtle text-primary rounded-pill ms-2 font-mono" style={{ fontSize: '0.65rem' }}>v1.0</span>
                   </div>
                 </div>
                 <span className={`badge ${resolved ? 'bg-success-subtle text-success border border-success-subtle' : 'bg-danger-subtle text-danger border border-danger-subtle'} rounded-pill px-3 py-1 font-mono`}>
@@ -111,7 +111,7 @@ export function HeroSection({ onOpenPilotModal, onScrollToDemo }) {
               <div className="p-3 rounded-3 mb-3" style={{ background: 'var(--nf-bg-surface)', border: '1px solid var(--nf-border)' }}>
                 <div className="d-flex justify-content-between text-muted small mb-2 font-mono">
                   <span>TIMETABLE SLOT: MON 10:00 - 11:00 AM</span>
-                  <span className="text-cyan">ROOM: LAB 302</span>
+                  <span className="text-primary fw-semibold">ROOM: LAB 302</span>
                 </div>
 
                 {!resolved ? (
@@ -169,7 +169,7 @@ export function HeroSection({ onOpenPilotModal, onScrollToDemo }) {
                   <button
                     onClick={handleResolve}
                     disabled={resolving}
-                    className="btn btn-primary-enterprise w-100 d-flex align-items-center justify-content-center gap-2 py-2 glow-cyan"
+                    className="btn btn-primary-enterprise w-100 d-flex align-items-center justify-content-center gap-2 py-2"
                   >
                     {resolving ? (
                       <>
@@ -210,16 +210,16 @@ export function HeroSection({ onOpenPilotModal, onScrollToDemo }) {
           </p>
           <div className="d-flex flex-wrap align-items-center justify-content-center gap-4 gap-md-5 opacity-80">
             <span className="fw-bold font-mono text-muted d-flex align-items-center gap-2">
-              <Award size={18} className="text-cyan" /> 100+ HIGHER ED CAMPUSES
+              <Award size={18} className="text-primary" /> 100+ HIGHER ED CAMPUSES
             </span>
             <span className="fw-bold font-mono text-muted d-flex align-items-center gap-2">
-              <Award size={18} className="text-cyan" /> STATE TECHNICAL UNIVERSITIES
+              <Award size={18} className="text-primary" /> STATE TECHNICAL UNIVERSITIES
             </span>
             <span className="fw-bold font-mono text-muted d-flex align-items-center gap-2">
-              <Award size={18} className="text-cyan" /> AUTONOMOUS COLLEGES
+              <Award size={18} className="text-primary" /> AUTONOMOUS COLLEGES
             </span>
             <span className="fw-bold font-mono text-muted d-flex align-items-center gap-2">
-              <Award size={18} className="text-cyan" /> POLYTECHNIC & STEM INSTITUTES
+              <Award size={18} className="text-primary" /> POLYTECHNIC & STEM INSTITUTES
             </span>
           </div>
         </div>

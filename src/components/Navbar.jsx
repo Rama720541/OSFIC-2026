@@ -6,18 +6,18 @@ export function Navbar({ theme, toggleTheme, onOpenPilotModal, onOpenLoginModal,
 
   return (
     <nav className="navbar navbar-expand-lg sticky-top glass-panel py-3 border-bottom">
-      <div className="container">
+      <div className="container-fluid px-3 px-xl-5">
         {/* Brand Logo & Version Tag */}
-        <a className="navbar-brand d-flex align-items-center gap-2 text-decoration-none" href="#">
-          <div className="rounded-3 p-2 d-flex align-items-center justify-content-center shadow-sm" style={{ background: 'linear-gradient(135deg, #0284c7 0%, #2563eb 100%)', boxShadow: '0 0 16px rgba(56, 189, 248, 0.45)' }}>
+        <a className="navbar-brand d-flex align-items-center gap-2 text-decoration-none me-4" href="#">
+          <div className="rounded-3 p-2 d-flex align-items-center justify-content-center shadow-sm" style={{ background: 'linear-gradient(135deg, #1d4ed8 0%, #2563eb 100%)' }}>
             <Sparkles size={20} className="text-white" />
           </div>
           <div className="d-flex flex-column">
             <span className="fw-bolder fs-4 tracking-tight" style={{ letterSpacing: '-0.5px' }}>
-              Nexus<span className="text-cyan">Flow</span>
+              Nexus<span className="text-primary">Flow</span>
             </span>
           </div>
-          <span className="badge bg-primary bg-opacity-10 text-cyan border border-info border-opacity-30 rounded-pill px-2 py-1 ms-2 d-none d-sm-inline-flex align-items-center gap-1" style={{ fontSize: '0.72rem', boxShadow: '0 0 10px rgba(56, 189, 248, 0.15)' }}>
+          <span className="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill px-2 py-1 ms-2 d-none d-sm-inline-flex align-items-center gap-1" style={{ fontSize: '0.72rem' }}>
             <span className="pulsing-dot" style={{ width: '6px', height: '6px' }}></span>
             v1.0 Enterprise Ready
           </span>
@@ -70,7 +70,7 @@ export function Navbar({ theme, toggleTheme, onOpenPilotModal, onOpenLoginModal,
             </li>
           </ul>
 
-          <div className="d-flex align-items-center gap-2 flex-wrap mt-3 mt-lg-0">
+          <div className="d-flex align-items-center gap-2 flex-wrap mt-3 mt-lg-0 ms-lg-auto">
             {/* Theme Toggle Button */}
             <button
               onClick={toggleTheme}
@@ -95,7 +95,7 @@ export function Navbar({ theme, toggleTheme, onOpenPilotModal, onOpenLoginModal,
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                <LogIn size={15} className="text-cyan" />
+                <LogIn size={15} className="text-primary" />
                 <span>Login</span>
               </button>
               <ul className="dropdown-menu dropdown-menu-end shadow-lg border card-enterprise p-2" aria-labelledby="loginDropdown" style={{ minWidth: '230px' }}>
@@ -107,7 +107,7 @@ export function Navbar({ theme, toggleTheme, onOpenPilotModal, onOpenLoginModal,
                     className="dropdown-item rounded-2 py-2 d-flex align-items-center gap-2"
                     onClick={() => { onOpenLoginModal('Teacher'); setNavOpen(false); }}
                   >
-                    <UserCheck size={16} className="text-cyan" />
+                    <UserCheck size={16} className="text-primary" />
                     <div>
                       <div className="fw-semibold">Teacher Portal</div>
                       <small className="text-muted">Attendance & proxy requests</small>
@@ -146,10 +146,10 @@ export function Navbar({ theme, toggleTheme, onOpenPilotModal, onOpenLoginModal,
                 </li>
                 <li>
                   <button
-                    className="dropdown-item rounded-2 py-2 d-flex align-items-center gap-2 text-cyan fw-semibold"
+                    className="dropdown-item rounded-2 py-2 d-flex align-items-center gap-2 text-primary fw-semibold"
                     onClick={() => { onOpenRegisterModal('Institution'); setNavOpen(false); }}
                   >
-                    <UserPlus size={16} className="text-cyan" />
+                    <UserPlus size={16} className="text-primary" />
                     <div>
                       <div>New Institution? Register</div>
                       <small className="text-muted" style={{ fontSize: '0.7rem' }}>Onboard campus node</small>
@@ -164,14 +164,14 @@ export function Navbar({ theme, toggleTheme, onOpenPilotModal, onOpenLoginModal,
               onClick={() => { onOpenRegisterModal('Institution'); setNavOpen(false); }}
               className="btn btn-outline-enterprise d-flex align-items-center gap-2"
             >
-              <UserPlus size={16} className="text-cyan" />
+              <UserPlus size={16} className="text-primary" />
               <span>Register</span>
             </button>
 
             {/* Primary Pilot CTA */}
             <button
               onClick={() => { onOpenPilotModal(); setNavOpen(false); }}
-              className="btn btn-primary-enterprise d-flex align-items-center gap-2 glow-blue"
+              className="btn btn-primary-enterprise d-flex align-items-center gap-2"
             >
               <Building2 size={16} />
               <span>Schedule Pilot</span>
