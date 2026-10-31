@@ -62,7 +62,7 @@ export function BootstrapCarousel({ onOpenPilotModal }) {
             <div className="carousel-item active p-4 p-md-5">
               <div className="row align-items-center g-4">
                 <div className="col-lg-6">
-                  <span className="badge rounded-pill px-3 py-1 font-mono mb-3" style={{ background: 'rgba(56, 189, 248, 0.15)', border: '1px solid rgba(56, 189, 248, 0.4)', color: '#38bdf8' }}>
+                  <span className="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill px-3 py-1 font-mono mb-3">
                     01 // NEURAL CSP & GENETIC SOLVER
                   </span>
                   <h3 className="display-6 fw-bold mb-3">
@@ -101,7 +101,7 @@ export function BootstrapCarousel({ onOpenPilotModal }) {
                         <span>Legacy Manual Scheduling</span>
                         <span>180 - 240 Hours / Semester</span>
                       </div>
-                      <div className="progress" style={{ height: '8px', background: '#0a142e' }}>
+                      <div className="progress progress-track-custom" style={{ height: '8px' }}>
                         <div className="progress-bar bg-danger" role="progressbar" style={{ width: '92%' }}></div>
                       </div>
                     </div>
@@ -110,7 +110,7 @@ export function BootstrapCarousel({ onOpenPilotModal }) {
                         <span>NexusFlow Autonomous Engine</span>
                         <span className="fw-bold text-cyan font-mono">&lt; 4 Minutes (0 Collisions)</span>
                       </div>
-                      <div className="progress" style={{ height: '8px', background: '#0a142e' }}>
+                      <div className="progress progress-track-custom" style={{ height: '8px' }}>
                         <div className="progress-bar" role="progressbar" style={{ width: '8%', background: 'linear-gradient(90deg, #38bdf8, #2563eb)' }}></div>
                       </div>
                     </div>
@@ -131,7 +131,7 @@ export function BootstrapCarousel({ onOpenPilotModal }) {
             <div className="carousel-item p-4 p-md-5">
               <div className="row align-items-center g-4">
                 <div className="col-lg-6">
-                  <span className="badge rounded-pill px-3 py-1 font-mono mb-3" style={{ background: 'rgba(245, 158, 11, 0.15)', border: '1px solid rgba(245, 158, 11, 0.4)', color: '#fbbf24' }}>
+                  <span className="badge bg-warning-subtle text-warning border border-warning-subtle rounded-pill px-3 py-1 font-mono mb-3">
                     02 // DISRUPTION INTELLIGENCE
                   </span>
                   <h3 className="display-6 fw-bold mb-3">
@@ -201,7 +201,7 @@ export function BootstrapCarousel({ onOpenPilotModal }) {
             <div className="carousel-item p-4 p-md-5">
               <div className="row align-items-center g-4">
                 <div className="col-lg-6">
-                  <span className="badge rounded-pill px-3 py-1 font-mono mb-3" style={{ background: 'rgba(6, 182, 212, 0.15)', border: '1px solid rgba(6, 182, 212, 0.4)', color: '#22d3ee' }}>
+                  <span className="badge bg-info-subtle text-info border border-info-subtle rounded-pill px-3 py-1 font-mono mb-3">
                     03 // SPACE UTILIZATION
                   </span>
                   <h3 className="display-6 fw-bold mb-3">
@@ -276,26 +276,26 @@ export function BootstrapCarousel({ onOpenPilotModal }) {
             <div className="carousel-item p-4 p-md-5">
               <div className="row align-items-center g-4">
                 <div className="col-lg-6">
-                  <span className="badge rounded-pill px-3 py-1 font-mono mb-3" style={{ background: 'rgba(139, 92, 246, 0.15)', border: '1px solid rgba(139, 92, 246, 0.4)', color: '#c084fc' }}>
+                  <span className="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill px-3 py-1 font-mono mb-3">
                     04 // AUDIT & COMPLIANCE
                   </span>
                   <h3 className="display-6 fw-bold mb-3">
-                    Institutional Governance <span style={{ color: '#c084fc' }}>Audit-Ready in Real-Time</span>
+                    Institutional Governance <span className="text-primary">Audit-Ready in Real-Time</span>
                   </h3>
                   <p className="text-muted mb-4 fs-6">
                     Eliminate compliance panic during NAAC, NBA, and UGC peer committee visits. NexusFlow archives immutable logs of every lecture slot conducted, proxy assignment approved, and student attendance logged.
                   </p>
                   <ul className="list-unstyled mb-4">
                     <li className="d-flex align-items-center gap-2 mb-2 text-muted small">
-                      <CheckCircle2 size={16} style={{ color: '#c084fc' }} />
+                      <CheckCircle2 size={16} className="text-primary" />
                       <span>Tamper-proof digital logbook meeting NIRF & NAAC criteria</span>
                     </li>
                     <li className="d-flex align-items-center gap-2 mb-2 text-muted small">
-                      <CheckCircle2 size={16} style={{ color: '#c084fc' }} />
+                      <CheckCircle2 size={16} className="text-primary" />
                       <span>Direct sync with UGC credit framework & NEP 2020 guidelines</span>
                     </li>
                     <li className="d-flex align-items-center gap-2 text-muted small">
-                      <CheckCircle2 size={16} style={{ color: '#c084fc' }} />
+                      <CheckCircle2 size={16} className="text-primary" />
                       <span>Automated 75% attendance warning triggers for semester admit cards</span>
                     </li>
                   </ul>
@@ -307,7 +307,7 @@ export function BootstrapCarousel({ onOpenPilotModal }) {
                 <div className="col-lg-6">
                   <div className="p-4 rounded-4 shadow-sm border" style={{ background: 'var(--nf-bg-surface)', borderColor: 'var(--nf-border)' }}>
                     <div className="d-flex justify-content-between align-items-center mb-3">
-                      <span className="fw-bold small font-mono" style={{ color: '#c084fc' }}>NAAC / NIRF AUDIT REPORT</span>
+                      <span className="fw-bold small font-mono text-primary">NAAC / NIRF AUDIT REPORT</span>
                       <span className="badge bg-success text-white">100% VERIFIED</span>
                     </div>
                     <div className="p-3 rounded-3 mb-2" style={{ background: 'var(--nf-bg-card)', border: '1px solid var(--nf-border)' }}>

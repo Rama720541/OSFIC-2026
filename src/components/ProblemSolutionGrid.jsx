@@ -1,5 +1,5 @@
 import React from 'react';
-import { XCircle, CheckCircle2, MessageSquareWarning, ArrowRight, ShieldCheck, Clock, Users, Database, Cpu } from 'lucide-react';
+import { XCircle, CheckCircle2, ArrowRight, Cpu } from 'lucide-react';
 
 export function ProblemSolutionGrid({ onOpenPilotModal }) {
   const problems = [
@@ -69,10 +69,10 @@ export function ProblemSolutionGrid({ onOpenPilotModal }) {
         <div className="row g-4 align-items-stretch">
           {/* The Old Way Column */}
           <div className="col-lg-6">
-            <div className="h-100 p-4 p-md-5 rounded-4 card-enterprise position-relative border-danger border-opacity-30" style={{ background: 'rgba(239, 68, 68, 0.03)' }}>
+            <div className="h-100 p-4 p-md-5 rounded-4 card-enterprise position-relative border-danger border-opacity-30" style={{ background: 'rgba(239, 68, 68, 0.02)' }}>
               <div className="d-flex align-items-center justify-content-between mb-4 pb-3 border-bottom border-danger border-opacity-25">
                 <div className="d-flex align-items-center gap-2">
-                  <div className="p-2 rounded-3 bg-danger bg-opacity-10 text-danger">
+                  <div className="p-2 rounded-3 bg-danger bg-opacity-10 text-danger d-flex align-items-center justify-content-center">
                     <XCircle size={22} />
                   </div>
                   <div>
@@ -93,7 +93,7 @@ export function ProblemSolutionGrid({ onOpenPilotModal }) {
                       <div>
                         <h5 className="fs-6 fw-bold mb-1">{item.title}</h5>
                         <p className="small text-muted mb-2">{item.desc}</p>
-                        <span className="badge bg-danger-subtle text-danger font-mono" style={{ fontSize: '0.7rem' }}>
+                        <span className="badge impact-badge font-mono" style={{ fontSize: '0.7rem' }}>
                           Impact: {item.metric}
                         </span>
                       </div>
@@ -104,33 +104,33 @@ export function ProblemSolutionGrid({ onOpenPilotModal }) {
             </div>
           </div>
 
-          {/* The NexusFlow Way Column (Fully Optimized for both Dark and Light Mode) */}
+          {/* The NexusFlow Way Column (Fully Optimized for both Light and Dark Mode) */}
           <div className="col-lg-6">
             <div className="h-100 p-4 p-md-5 rounded-4 card-enterprise position-relative nexusflow-way-card shadow-2xl">
               <div className="d-flex align-items-center justify-content-between mb-4 pb-3 border-bottom" style={{ borderColor: 'var(--nf-border-bright)' }}>
                 <div className="d-flex align-items-center gap-2">
-                  <div className="p-2 rounded-3 solution-item-icon" style={{ background: 'rgba(56, 189, 248, 0.15)' }}>
+                  <div className="p-2 rounded-3 solution-item-icon-box d-flex align-items-center justify-content-center shadow-sm">
                     <CheckCircle2 size={22} />
                   </div>
                   <div>
                     <h4 className="fw-bold mb-0 nexusflow-way-title">The NexusFlow Way</h4>
-                    <span className="small text-muted font-mono" style={{ fontSize: '0.75rem' }}>Automated Intelligence & Real-Time Sync</span>
+                    <span className="small text-muted font-mono" style={{ fontSize: '0.75rem' }}>Autonomous Intelligence & Zero Clashes</span>
                   </div>
                 </div>
-                <span className="badge rounded-pill px-3 py-1 font-mono" style={{ background: 'linear-gradient(135deg, #0284c7, #2563eb)', color: '#fff', fontSize: '0.7rem' }}>ENTERPRISE ERP</span>
+                <span className="badge rounded-pill px-3 py-1 font-mono" style={{ background: 'linear-gradient(135deg, #1d4ed8, #2563eb)', color: '#fff', fontSize: '0.7rem' }}>ENTERPRISE ERP</span>
               </div>
 
               <div className="d-flex flex-column gap-3">
                 {solutions.map((item, idx) => (
                   <div key={idx} className="p-3 rounded-3 solution-item-card">
                     <div className="d-flex align-items-start gap-3">
-                      <div className="solution-item-icon flex-shrink-0 mt-1">
-                        <CheckCircle2 size={18} />
+                      <div className="solution-item-icon-box p-1.5 rounded-2 flex-shrink-0 mt-0.5 d-flex align-items-center justify-content-center">
+                        <CheckCircle2 size={16} />
                       </div>
-                      <div>
-                        <h5 className="fs-6 fw-bold mb-1 solution-item-title">{item.title}</h5>
-                        <p className="small text-muted mb-2">{item.desc}</p>
-                        <span className="badge bg-success bg-opacity-15 text-success border border-success border-opacity-30 font-mono" style={{ fontSize: '0.7rem' }}>
+                      <div className="flex-grow-1">
+                        <h5 className="fs-6 mb-1 solution-item-title">{item.title}</h5>
+                        <p className="small mb-2 solution-item-desc">{item.desc}</p>
+                        <span className="badge guarantee-badge font-mono" style={{ fontSize: '0.72rem' }}>
                           Guarantee: {item.metric}
                         </span>
                       </div>
@@ -143,7 +143,7 @@ export function ProblemSolutionGrid({ onOpenPilotModal }) {
         </div>
 
         {/* CTA Strip */}
-        <div className="mt-5 p-4 rounded-4 card-enterprise border-glow-cyan text-center d-flex flex-column flex-md-row align-items-center justify-content-between gap-3 shadow-lg">
+        <div className="mt-5 p-4 rounded-4 card-enterprise text-center d-flex flex-column flex-md-row align-items-center justify-content-between gap-3 shadow-lg">
           <div className="text-md-start">
             <h5 className="fw-bold mb-1">Ready to bring zero-collision scheduling to your campus?</h5>
             <p className="small text-muted mb-0">Join the OSFIC 2026 pilot program for higher education institutions.</p>

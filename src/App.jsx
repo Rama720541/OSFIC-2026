@@ -14,7 +14,8 @@ import LoginModal from './components/LoginModal';
 import RegisterModal from './components/RegisterModal';
 
 export function App() {
-  const [theme, setTheme] = useState('dark');
+  // Light mode by default per user specification
+  const [theme, setTheme] = useState('light');
   const [isPilotModalOpen, setIsPilotModalOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
