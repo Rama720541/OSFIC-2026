@@ -4,7 +4,7 @@
  * Includes intelligent mock-fallback if backend is offline or during static site hosting.
  */
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+const API_BASE_URL = import.meta.env.VITE_API_URL || (typeof window !== 'undefined' && window.location.port === '8000' ? '' : 'http://127.0.0.1:8000');
 
 // In-memory fallback dataset for offline/static deployment
 let localStudents = [
@@ -238,3 +238,4 @@ export const api = {
     return { data: localAuditLogs.slice(0, limit), source: 'local' };
   }
 };
+

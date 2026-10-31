@@ -117,3 +117,4 @@ def test_admin_kpis_and_audit():
     audits = client.get("/admin/audit")
     assert audits.status_code == 200
     assert len(audits.json()) > 0
+

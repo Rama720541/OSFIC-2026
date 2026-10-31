@@ -1,9 +1,12 @@
 """NexusFlow College SaaS - Core FastAPI Application."""
 
+import os
 from datetime import datetime, date
 from typing import List, Optional
 from fastapi import FastAPI, Depends, HTTPException, Query, status
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from sqlalchemy.orm import Session
 from sqlalchemy import func
 
@@ -42,9 +45,19 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Check for frontend build (dist or docs)
+FRONTEND_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "dist"))
+if not os.path.exists(os.path.join(FRONTEND_DIR, "index.html")):
+    FRONTEND_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "docs"))
 
-@app.get("/", tags=["Health"])
-def root():
+HAS_FRONTEND = os.path.exists(os.path.join(FRONTEND_DIR, "index.html"))
+if HAS_FRONTEND and os.path.exists(os.path.join(FRONTEND_DIR, "assets")):
+    app.mount("/assets", StaticFiles(directory=os.path.join(FRONTEND_DIR, "assets")), name="assets")
+
+
+@app.get("/api/info", tags=["Health"])
+@app.get("/api", tags=["Health"])
+def api_info():
     return {
         "service": "NexusFlow College SaaS API",
         "status": "online",
@@ -54,8 +67,16 @@ def root():
 
 
 @app.get("/health", tags=["Health"])
+@app.get("/api/health", tags=["Health"])
 def health_check():
     return {"status": "healthy", "timestamp": datetime.utcnow().isoformat()}
+
+
+@app.get("/", tags=["Frontend"])
+def root():
+    if HAS_FRONTEND:
+        return FileResponse(os.path.join(FRONTEND_DIR, "index.html"))
+    return api_info()
 
 
 # --- STUDENT ENDPOINTS ---

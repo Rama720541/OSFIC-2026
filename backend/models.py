@@ -88,3 +88,4 @@ class AuditLog(Base):
     actor = Column(String(100), nullable=False) # Admin/Faculty name or "AI Sentinel"
     severity = Column(String(20), default="info") # "info", "warning", "critical"
     created_at = Column(DateTime, default=datetime.utcnow)
+
