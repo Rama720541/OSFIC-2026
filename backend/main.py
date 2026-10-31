@@ -52,7 +52,9 @@ if not os.path.exists(os.path.join(FRONTEND_DIR, "index.html")):
 
 HAS_FRONTEND = os.path.exists(os.path.join(FRONTEND_DIR, "index.html"))
 if HAS_FRONTEND and os.path.exists(os.path.join(FRONTEND_DIR, "assets")):
-    app.mount("/assets", StaticFiles(directory=os.path.join(FRONTEND_DIR, "assets")), name="assets")
+    assets_path = os.path.join(FRONTEND_DIR, "assets")
+    app.mount("/assets", StaticFiles(directory=assets_path), name="assets")
+    app.mount("/OSFIC-2026/assets", StaticFiles(directory=assets_path), name="osfic_assets")
 
 
 @app.get("/api/info", tags=["Health"])
@@ -73,6 +75,8 @@ def health_check():
 
 
 @app.get("/", tags=["Frontend"])
+@app.get("/OSFIC-2026", tags=["Frontend"])
+@app.get("/OSFIC-2026/", tags=["Frontend"])
 def root():
     if HAS_FRONTEND:
         return FileResponse(os.path.join(FRONTEND_DIR, "index.html"))

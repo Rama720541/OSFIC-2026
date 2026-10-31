@@ -22,3 +22,4 @@ if %errorlevel% neq 0 (
     echo [-] Platform stopped or encountered an issue.
     pause
 )
+
