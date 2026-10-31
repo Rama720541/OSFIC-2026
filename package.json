@@ -5,6 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "backend": "python -m uvicorn backend.main:app --host 127.0.0.1 --port 8000 --reload",
+    "test:backend": "python backend/test_routes_direct.py",
+    "seed": "python backend/seed.py",
     "build": "vite build",
     "preview": "vite preview",
     "deploy": "gh-pages -d dist --dotfiles"

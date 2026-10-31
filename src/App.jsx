@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
 import BootstrapCarousel from './components/BootstrapCarousel';
@@ -10,30 +10,53 @@ import MetricsBar from './components/MetricsBar';
 import SecurityArchitecture from './components/SecurityArchitecture';
 import Footer from './components/Footer';
 import PilotModal from './components/PilotModal';
-import LoginModal from './components/LoginModal';
+import LoginModal, { MOCK_ACCOUNTS } from './components/LoginModal';
 import RegisterModal from './components/RegisterModal';
+import DashboardSelectorModal from './components/DashboardSelectorModal';
+import { api } from './services/api';
 
 export function App() {
-  // Light mode by default per user specification
   const [theme, setTheme] = useState('light');
   const [isPilotModalOpen, setIsPilotModalOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
+  const [isDashboardSelectorOpen, setIsDashboardSelectorOpen] = useState(false);
   const [loginRole, setLoginRole] = useState('Teacher');
   const [registerRole, setRegisterRole] = useState('Institution');
+  
+  // Track authenticated user session from Mock SSO
+  const [currentUser, setCurrentUser] = useState(() => {
+    return MOCK_ACCOUNTS.teacher; // default initial demo profile
+  });
 
-  // Initialize and synchronize theme with document data-bs-theme
+  // Track backend connectivity status
+  const [backendStatus, setBackendStatus] = useState({ isLive: false, status: 'checking' });
+
+  // Ref to imperatively control the DashboardSwitcher's active tab
+  const dashboardRef = useRef(null);
+
   useEffect(() => {
     document.documentElement.setAttribute('data-bs-theme', theme);
   }, [theme]);
 
-  const toggleTheme = () => {
-    setTheme(prev => (prev === 'dark' ? 'light' : 'dark'));
-  };
+  // Periodic health check against FastAPI backend
+  useEffect(() => {
+    let isMounted = true;
+    const probeBackend = async () => {
+      const res = await api.checkHealth();
+      if (isMounted) setBackendStatus(res);
+    };
+    probeBackend();
+    const interval = setInterval(probeBackend, 15000);
+    return () => {
+      isMounted = false;
+      clearInterval(interval);
+    };
+  }, []);
 
-  const handleOpenPilotModal = () => {
-    setIsPilotModalOpen(true);
-  };
+  const toggleTheme = () => setTheme(prev => (prev === 'dark' ? 'light' : 'dark'));
+
+  const handleOpenPilotModal = () => setIsPilotModalOpen(true);
 
   const handleOpenLoginModal = (role = 'Teacher') => {
     setLoginRole(role);
@@ -49,69 +72,77 @@ export function App() {
 
   const handleScrollToDemo = () => {
     const el = document.getElementById('dashboards');
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  /**
+   * Called when a role is selected from MockDashboardCTA or LoginModal
+   */
+  const handleSelectDashboardRole = (roleId) => {
+    if (dashboardRef.current) {
+      dashboardRef.current.goToTab(roleId);
     }
+    setTimeout(() => {
+      const el = document.getElementById('dashboards');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }, 80);
+  };
+
+  const handleUserAuthenticated = (account) => {
+    setCurrentUser(account);
   };
 
   return (
     <div className="min-vh-100 d-flex flex-column">
-      {/* Global Navigation Bar */}
       <Navbar
         theme={theme}
         toggleTheme={toggleTheme}
+        currentUser={currentUser}
+        backendStatus={backendStatus}
         onOpenPilotModal={handleOpenPilotModal}
         onOpenLoginModal={handleOpenLoginModal}
         onOpenRegisterModal={handleOpenRegisterModal}
       />
 
       <main className="flex-grow-1">
-        {/* 1. Hero Section (The 1Cr Hook) */}
         <HeroSection
           onOpenPilotModal={handleOpenPilotModal}
           onScrollToDemo={handleScrollToDemo}
         />
-
-        {/* 2. Flagship Capabilities Bootstrap Carousel */}
         <BootstrapCarousel onOpenPilotModal={handleOpenPilotModal} />
-
-        {/* 3. Problem vs Solution Grid (Dual Dark/Light Optimized) */}
         <ProblemSolutionGrid onOpenPilotModal={handleOpenPilotModal} />
-
-        {/* 4. Core Product Modules Showcase */}
         <CoreModulesShowcase onOpenPilotModal={handleOpenPilotModal} />
 
-        {/* 5. Interactive Dashboard Switcher (Teacher vs Student) */}
-        <InteractiveDashboardSwitcher onOpenPilotModal={handleOpenPilotModal} />
+        {/* Dashboard Switcher — with active currentUser & backend sync */}
+        <InteractiveDashboardSwitcher
+          ref={dashboardRef}
+          currentUser={currentUser}
+          backendStatus={backendStatus}
+          onOpenPilotModal={handleOpenPilotModal}
+          onOpenLoginModal={handleOpenLoginModal}
+          onOpenSelectorModal={() => setIsDashboardSelectorOpen(true)}
+        />
 
-        {/* 6. Institutional ROI & Space Optimization Calculator */}
         <RoiCalculator onOpenPilotModal={handleOpenPilotModal} />
-
-        {/* 7. Impact & ROI Metrics Bar (Investor Appeal) */}
         <MetricsBar onOpenPilotModal={handleOpenPilotModal} />
-
-        {/* 8. Security & Architecture Trust Section */}
         <SecurityArchitecture />
       </main>
 
-      {/* 9. Global Footer & Institutional Links */}
       <Footer
         onOpenPilotModal={handleOpenPilotModal}
         onOpenLoginModal={handleOpenLoginModal}
       />
 
-      {/* Interactive Modals */}
-      <PilotModal
-        isOpen={isPilotModalOpen}
-        onClose={() => setIsPilotModalOpen(false)}
-      />
+      {/* Modals */}
+      <PilotModal isOpen={isPilotModalOpen} onClose={() => setIsPilotModalOpen(false)} />
 
       <LoginModal
         isOpen={isLoginModalOpen}
         initialRole={loginRole}
         onClose={() => setIsLoginModalOpen(false)}
-        onSwitchToDashboard={() => handleScrollToDemo()}
+        onSwitchToDashboard={handleSelectDashboardRole}
         onSwitchToRegister={() => handleOpenRegisterModal('Institution')}
+        onUserAuthenticated={handleUserAuthenticated}
       />
 
       <RegisterModal
@@ -120,7 +151,15 @@ export function App() {
         onClose={() => setIsRegisterModalOpen(false)}
         onSwitchToLogin={() => handleOpenLoginModal('Teacher')}
       />
+
+      {/* Dashboard Role Selector Modal */}
+      <DashboardSelectorModal
+        isOpen={isDashboardSelectorOpen}
+        onClose={() => setIsDashboardSelectorOpen(false)}
+        onSelectRole={handleSelectDashboardRole}
+      />
     </div>
   );
 }
+
 export default App;

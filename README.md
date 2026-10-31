@@ -1,64 +1,87 @@
-# NexusFlow — Academic Resource & Timetable Intelligence
+# NexusFlow — Academic Resource & Timetable Intelligence Platform
 
 > **OSFIC 2026 Mandate (Problem Statement PS-040: Academic Scheduling & Resource Optimization)**  
-
+> **Full-Stack SaaS Platform: Enterprise React + Vite Frontend & FastAPI + SQLite Core Engine**
 
 ---
 
-## 🌟 Key Highlights & Architecture
+## 🌟 Key Highlights & Full-Stack SaaS Architecture
 
-- **Global Navigation Bar**: Features the NexusFlow brand, live pulsing `v1.0 Enterprise Ready` badge, dynamic theme toggle (Dark / Light mode), multi-role Login dropdown (`Teacher`, `Student`, `Institutional Admin`), and modal trigger for `Schedule an Institutional Pilot`.
-- **Hero Section (The ₹1 Cr Hook)**:
-  - Official OSFIC PS-040 Gov initiative eyebrow tag
-  - Conversion headline & sub-headline tailored for registrars, deans, and funding panels
-  - **Live Constraint Resolution Engine Simulator**: Interactive demo allowing panel judges to simulate and auto-resolve hard schedule clashes in real time
-  - Institutional trust strip: "Trusted by 100+ Institutions • Zero Hard-Constraint Violations Guaranteed" across state technical universities and autonomous colleges
-- **Bootstrap 5 Enterprise Carousel**:
-  - Slide 1: CSP & Genetic Timetable Solver (< 4 minute conflict-free schedules)
-  - Slide 2: Real-time Autonomous Disruption & Faculty Proxy Engine (< 90s substitution)
-  - Slide 3: Campus Infrastructure & Space Optimizer (+42% lab yield)
-  - Slide 4: UGC / NEP 2020 & NAAC/NIRF Real-time Audit Readiness
-- **Problem vs. Solution Grid**: Direct contrast between the old manual spreadsheet/WhatsApp status quo and the NexusFlow automated intelligence way.
-- **Core Product Modules Showcase**: B2B feature cards and interactive deep-dive architecture views for all 4 core engines.
-- **Interactive Dashboard Switcher (Dual MVPs)**:
-  - **Teacher Portal Preview**:
-    - Live countdown timer for the next active lecture slot
-    - Quick attendance roll-marker with instant local ERP commit
-    - One-tap absence/proxy request engine with AI faculty recommendations
-    - Today's faculty timeline
-  - **Student Portal Preview**:
-    - Personalized daily schedule timeline with active slot beacons
-    - Live attendance health gauge with slider simulator and 75% exam debarment alerts
-    - Real-time room relocation alert banner
-    - Digital course vault and lecture slides link
-- **Campus ROI & Space Optimization Calculator**: Real-time financial & time savings calculator with dynamic sliders for enrolled students, faculty, and campus rooms.
-- **Impact & ROI Metrics Bar**: Highlighting 0% collision rates, 85% coordination reduction, and ₹1 Crore fund deployment roadmap.
-- **Security & Architecture Trust Section**: Multi-tenant isolation, Zero-Trust RBAC, immutable audit trails, and Indian data sovereignty (DPDP Act 2023).
-- **Global Footer**: Comprehensive institutional directory and mandatory OSFIC 2026 alignment disclosure.
+- **Global Navigation Bar**: Features the NexusFlow brand, live pulsing `v1.0 Enterprise SaaS` badge, dynamic theme toggle (Dark / Light mode), multi-role Login dropdown (`Teacher`, `Student`, `Institutional Admin`), and modal trigger for `Schedule an Institutional Pilot`.
+- **Pre-Configured Mock IDs & Instant SSO Evaluation**:
+  - 👨‍🏫 **Teacher Portal**:
+    - **ID / Email**: `FAC-101` / `s.jenkins@nexusflow.edu`
+    - **Passcode**: `faculty@2026`
+    - **Name**: Dr. Sarah Jenkins (Associate Professor, CSE • CS501 Operating Systems)
+  - 🎓 **Student Portal**:
+    - **ID / Email**: `21BCE1001` / `arjun.m@nexusflow.edu`
+    - **Passcode**: `student@2026`
+    - **Name**: Arjun Mehta (B.Tech CSE • Sem 5, 91.4% Attendance)
+  - 🏛️ **Institutional Admin / Dean Portal**:
+    - **ID / Email**: `ADM-001` / `a.desai@nexusflow.edu`
+    - **Passcode**: `admin@2026`
+    - **Name**: Dr. Anita Desai (Dean of Academics & NAAC Accreditation Head)
+- **FastAPI Core Backend (`backend/`)**:
+  - **SQLite Database** (`osfic.db`) with SQLAlchemy ORM and schema auto-migration.
+  - **CRUD & Analytics Endpoints**:
+    - `GET /students` — Filter by department, search by name/roll.
+    - `POST /attendance/batch` — Bulk sync classroom attendance with auto-recalculated student percentage.
+    - `POST /proxy-requests` — Anomaly detection & AI Sentinel risk scoring (flags suspicious proxy attempts).
+    - `PATCH /proxy-requests/{id}` — Academic dean review & substitution authorization.
+    - `GET /admin/kpis` — Live calculation of campus attendance, active faculty load, and blocked anomalies.
+    - `GET /admin/audit` — Immutable SHA-256 institutional audit trail.
+- **Frontend API Client (`src/services/api.js`)**:
+  - Automatically queries the FastAPI backend when available.
+  - Seamless, zero-crash offline sandbox fallback if static or backend is paused.
+- **Live AI Sentinel**:
+  - Evaluates student proxy requests against behavioral models and keywords (`proxy`, `cover`, `emergency fake`).
+  - Flags anomalies and alerts administrators in real-time.
+- **Compliance & Audit Generation**:
+  - One-click cryptographic JSON/PDF export for NAAC / NIRF regulatory audits with digital seals.
 
 ---
 
 ## 🚀 Getting Started
 
-### 1. Install Dependencies
+### 1. Install Frontend Dependencies
 ```bash
 npm install
 ```
 
-### 2. Start Development Server
+### 2. Install Backend Python Dependencies
+```bash
+pip install -r backend/requirements.txt
+```
+
+### 3. Run Backend Server (FastAPI + SQLite)
+```bash
+npm run backend
+```
+> The API will be available at `http://127.0.0.1:8000` with Swagger docs at `http://127.0.0.1:8000/docs`.
+
+### 4. Run Frontend Development Server
 ```bash
 npm run dev
 ```
-Open your browser at `http://localhost:3000` to interact with the landing page and portal simulators.
+> The React application will run at `http://localhost:5173`.
 
-### 3. Production Build
+### 5. Run Direct Backend Integration Tests
+```bash
+npm run test:backend
+```
+> Validates all 8 institutional workflow endpoints, database transactions, and AI Sentinel risk scoring.
+
+### 6. Production Build & Deployment
 ```bash
 npm run build
 ```
-Creates production-ready, minified assets in the `dist/` directory.
+Creates production-ready minified assets in `dist/` and synced for GitHub Pages in `docs/`.
 
 ---
 
-## 🎨 Theme Support
-NexusFlow supports native Bootstrap 5.3 dark and light modes with custom CSS variables and glassmorphism styling via `[data-bs-theme="dark"]` and `[data-bs-theme="light"]`.
+## 🏛️ Institutional Onboarding & Commercial Deployment
 
+NexusFlow is architected for zero-downtime integration into existing university ERPs (SAP, PeopleSoft, TCS iON, Jenzabar):
+1. **Containerized Deployment**: Ready for Docker & Kubernetes on campus private cloud or AWS/Azure GovCloud.
+2. **Data Sovereignty**: Complete compliance with the Indian Digital Personal Data Protection (DPDP) Act 2023.
+3. **Role-Based Access Control (RBAC)**: Strict separation between students, faculty, and institutional deans.
