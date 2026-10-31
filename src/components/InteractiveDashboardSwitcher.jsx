@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { UserCheck, GraduationCap, Clock, AlertTriangle, CheckCircle, Calendar, MapPin, Send, Check, RefreshCw, Sparkles, BookOpen, ChevronRight, ShieldAlert, FileText } from 'lucide-react';
+import { UserCheck, GraduationCap, Clock, AlertTriangle, CheckCircle, Calendar, MapPin, Send, Check, RefreshCw, Sparkles, BookOpen, ChevronRight, ShieldAlert, FileText, Cpu } from 'lucide-react';
 
 export function InteractiveDashboardSwitcher({ onOpenPilotModal }) {
   const [activeTab, setActiveTab] = useState('teacher'); // 'teacher' | 'student'
@@ -60,10 +60,11 @@ export function InteractiveDashboardSwitcher({ onOpenPilotModal }) {
       <div className="container py-4">
         {/* Section Header */}
         <div className="text-center mb-5">
-          <span className="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill px-3 py-1 fw-bold text-uppercase" style={{ fontSize: '0.75rem' }}>
-            Interactive MVP Previews
+          <span className="badge-osfic text-uppercase font-mono mb-2" style={{ fontSize: '0.72rem' }}>
+            <Cpu size={14} className="text-cyan" />
+            Live Enterprise MVPs
           </span>
-          <h2 className="display-6 fw-bold mt-3 mb-2">
+          <h2 className="display-6 fw-bold mt-2 mb-2">
             Experience the <span className="text-gradient-primary">NexusFlow Interface</span>
           </h2>
           <p className="text-muted mx-auto" style={{ maxWidth: '640px' }}>
@@ -71,23 +72,23 @@ export function InteractiveDashboardSwitcher({ onOpenPilotModal }) {
           </p>
 
           {/* Interactive Toggle Switch */}
-          <div className="d-inline-flex p-1 rounded-pill mt-3 shadow-sm border" style={{ background: 'var(--nf-bg-surface)', borderColor: 'var(--nf-border)' }}>
+          <div className="d-inline-flex p-1 rounded-pill mt-3 shadow-lg border" style={{ background: 'var(--nf-bg-surface)', borderColor: 'var(--nf-border)' }}>
             <button
               onClick={() => setActiveTab('teacher')}
               className={`btn rounded-pill px-4 py-2 d-flex align-items-center gap-2 fw-semibold transition-all ${
-                activeTab === 'teacher' ? 'btn-primary shadow-sm text-white' : 'btn-link text-muted text-decoration-none'
+                activeTab === 'teacher' ? 'btn-primary-enterprise glow-blue' : 'btn-link text-muted text-decoration-none'
               }`}
             >
-              <UserCheck size={18} />
+              <UserCheck size={18} className={activeTab === 'teacher' ? 'text-white' : 'text-cyan'} />
               <span>Teacher Portal Preview</span>
             </button>
             <button
               onClick={() => setActiveTab('student')}
               className={`btn rounded-pill px-4 py-2 d-flex align-items-center gap-2 fw-semibold transition-all ${
-                activeTab === 'student' ? 'btn-primary shadow-sm text-white' : 'btn-link text-muted text-decoration-none'
+                activeTab === 'student' ? 'btn-primary-enterprise glow-blue' : 'btn-link text-muted text-decoration-none'
               }`}
             >
-              <GraduationCap size={18} />
+              <GraduationCap size={18} className={activeTab === 'student' ? 'text-white' : 'text-cyan'} />
               <span>Student Portal Preview</span>
             </button>
           </div>
@@ -95,30 +96,30 @@ export function InteractiveDashboardSwitcher({ onOpenPilotModal }) {
 
         {/* ===================== TAB 1: TEACHER PORTAL ===================== */}
         {activeTab === 'teacher' && (
-          <div className="card-enterprise p-4 p-md-5 border-primary border-opacity-30 shadow-lg">
+          <div className="card-enterprise p-4 p-md-5 border-glow-cyan shadow-2xl">
             {/* Top Bar / Profile Header */}
             <div className="d-flex flex-wrap justify-content-between align-items-center gap-3 pb-4 mb-4 border-bottom" style={{ borderColor: 'var(--nf-border)' }}>
               <div className="d-flex align-items-center gap-3">
-                <div className="rounded-circle p-2 bg-primary text-white d-flex align-items-center justify-content-center" style={{ width: '52px', height: '52px' }}>
+                <div className="rounded-circle p-2 d-flex align-items-center justify-content-center text-white" style={{ width: '52px', height: '52px', background: 'linear-gradient(135deg, #0284c7, #2563eb)', boxShadow: '0 0 16px rgba(56, 189, 248, 0.4)' }}>
                   <UserCheck size={28} />
                 </div>
                 <div>
                   <div className="d-flex align-items-center gap-2">
                     <h4 className="fw-bold mb-0">Prof. Rajeshwar Senapati</h4>
-                    <span className="badge bg-success-subtle text-success border border-success-subtle rounded-pill font-mono">
+                    <span className="badge bg-primary bg-opacity-20 text-cyan border border-info border-opacity-30 rounded-pill font-mono" style={{ fontSize: '0.72rem' }}>
                       Faculty ID: CSE-4089
                     </span>
                   </div>
-                  <small className="text-muted">Dept. of Computer Science & Engineering • VSSUT Campus Node</small>
+                  <small className="text-muted">Dept. of Computer Science & Engineering • Academic Cluster 1</small>
                 </div>
               </div>
 
               {/* Today's Active Countdown Badge */}
-              <div className="p-3 rounded-3 d-flex align-items-center gap-3" style={{ background: 'var(--nf-bg-surface)', border: '1px solid var(--nf-border-bright)' }}>
-                <Clock size={24} className="text-primary animate-pulse" />
+              <div className="p-3 rounded-3 d-flex align-items-center gap-3 border-glow-cyan" style={{ background: 'var(--nf-bg-surface)', border: '1px solid var(--nf-border-bright)' }}>
+                <Clock size={24} className="text-cyan animate-pulse" />
                 <div>
-                  <div className="small text-muted font-mono">NEXT ACTIVE CLASS COUNTDOWN</div>
-                  <div className="fw-bolder fs-5 text-primary font-mono">
+                  <div className="small text-muted font-mono" style={{ fontSize: '0.7rem' }}>NEXT ACTIVE CLASS COUNTDOWN</div>
+                  <div className="fw-bolder fs-5 text-cyan font-mono">
                     CS-301 (Lab 304) starts in {String(countdown.mins).padStart(2, '0')}:{String(countdown.secs).padStart(2, '0')}
                   </div>
                 </div>
@@ -140,7 +141,7 @@ export function InteractiveDashboardSwitcher({ onOpenPilotModal }) {
                     </div>
                     <button
                       onClick={handleSaveAttendance}
-                      className="btn btn-sm btn-primary-enterprise d-flex align-items-center gap-1"
+                      className="btn btn-sm btn-primary-enterprise d-flex align-items-center gap-1 glow-blue"
                     >
                       {attendanceSaved ? <Check size={14} /> : <FileText size={14} />}
                       <span>{attendanceSaved ? 'Saved to University ERP!' : 'Submit Class Log'}</span>
@@ -148,7 +149,7 @@ export function InteractiveDashboardSwitcher({ onOpenPilotModal }) {
                   </div>
 
                   {attendanceSaved && (
-                    <div className="alert alert-success d-flex align-items-center gap-2 py-2 small mb-3">
+                    <div className="alert alert-success d-flex align-items-center gap-2 py-2 small mb-3 border-success">
                       <CheckCircle size={16} />
                       <span>Attendance batch committed to central ERP registry with SHA-256 audit timestamp!</span>
                     </div>
@@ -166,7 +167,7 @@ export function InteractiveDashboardSwitcher({ onOpenPilotModal }) {
                       <tbody>
                         {students.map((st, sIdx) => (
                           <tr key={st.roll}>
-                            <td className="font-mono fw-semibold">{st.roll}</td>
+                            <td className="font-mono fw-semibold text-cyan">{st.roll}</td>
                             <td>{st.name}</td>
                             <td className="text-center">
                               <div className="btn-group btn-group-sm" role="group">
@@ -201,7 +202,7 @@ export function InteractiveDashboardSwitcher({ onOpenPilotModal }) {
 
                   <div className="d-flex justify-content-between align-items-center mt-3 pt-3 border-top text-muted small" style={{ borderColor: 'var(--nf-border)' }}>
                     <span>Present: {students.filter(s => s.status === 'present').length} • Late: {students.filter(s => s.status === 'late').length} • Absent: {students.filter(s => s.status === 'absent').length}</span>
-                    <span className="text-primary fw-medium font-mono">Sync Status: Auto-Connected</span>
+                    <span className="text-cyan fw-medium font-mono">Sync Status: Auto-Connected</span>
                   </div>
                 </div>
               </div>
@@ -283,12 +284,12 @@ export function InteractiveDashboardSwitcher({ onOpenPilotModal }) {
                         </div>
                         <span className="badge bg-success-subtle text-success">Done</span>
                       </div>
-                      <div className="d-flex justify-content-between align-items-center p-2 rounded-2 border-primary" style={{ background: 'rgba(59, 130, 246, 0.08)', border: '1px solid var(--nf-border-bright)' }}>
+                      <div className="d-flex justify-content-between align-items-center p-2 rounded-2 border-glow-cyan" style={{ background: 'rgba(56, 189, 248, 0.08)' }}>
                         <div>
-                          <div className="fw-bold small text-primary">11:30 - 01:00 PM: OS Lab Simulation</div>
+                          <div className="fw-bold small text-cyan font-mono">11:30 - 01:00 PM: OS Lab Simulation</div>
                           <div className="text-muted" style={{ fontSize: '0.72rem' }}>Lab 304 • Starting Soon</div>
                         </div>
-                        <span className="badge bg-primary text-white">Up Next</span>
+                        <span className="badge bg-primary text-white font-mono">Up Next</span>
                       </div>
                       <div className="d-flex justify-content-between align-items-center p-2 rounded-2" style={{ background: 'var(--nf-bg-card)', border: '1px solid var(--nf-border)' }}>
                         <div>
@@ -307,11 +308,11 @@ export function InteractiveDashboardSwitcher({ onOpenPilotModal }) {
 
         {/* ===================== TAB 2: STUDENT PORTAL ===================== */}
         {activeTab === 'student' && (
-          <div className="card-enterprise p-4 p-md-5 border-success border-opacity-30 shadow-lg">
+          <div className="card-enterprise p-4 p-md-5 border-glow-cyan shadow-2xl">
             {/* Top Bar / Student Profile Header */}
             <div className="d-flex flex-wrap justify-content-between align-items-center gap-3 pb-4 mb-4 border-bottom" style={{ borderColor: 'var(--nf-border)' }}>
               <div className="d-flex align-items-center gap-3">
-                <div className="rounded-circle p-2 bg-success text-white d-flex align-items-center justify-content-center" style={{ width: '52px', height: '52px' }}>
+                <div className="rounded-circle p-2 d-flex align-items-center justify-content-center text-white" style={{ width: '52px', height: '52px', background: 'linear-gradient(135deg, #059669, #10b981)', boxShadow: '0 0 16px rgba(16, 185, 129, 0.4)' }}>
                   <GraduationCap size={28} />
                 </div>
                 <div>
@@ -321,12 +322,12 @@ export function InteractiveDashboardSwitcher({ onOpenPilotModal }) {
                       B.Tech CSE • Sem 5
                     </span>
                   </div>
-                  <small className="text-muted">Reg No: 2201090124 • Section A • VSSUT Burla</small>
+                  <small className="text-muted">Reg No: 2201090124 • Section A • Academic Node</small>
                 </div>
               </div>
 
               {/* Attendance Health Gauge */}
-              <div className="p-3 rounded-3 d-flex align-items-center gap-3" style={{ background: 'var(--nf-bg-surface)', border: `1px solid ${attendanceHealth >= 75 ? 'var(--nf-success)' : 'var(--nf-danger)'}` }}>
+              <div className="p-3 rounded-3 d-flex align-items-center gap-3" style={{ background: 'var(--nf-bg-surface)', border: `1px solid ${attendanceHealth >= 75 ? 'rgba(16, 185, 129, 0.5)' : 'rgba(244, 63, 94, 0.5)'}`, boxShadow: attendanceHealth >= 75 ? '0 0 16px -3px rgba(16, 185, 129, 0.3)' : '0 0 16px -3px rgba(244, 63, 94, 0.3)' }}>
                 <div className="text-center font-mono">
                   <div className="small text-muted" style={{ fontSize: '0.7rem' }}>OVERALL ATTENDANCE</div>
                   <div className={`fw-bolder fs-4 ${attendanceHealth >= 75 ? 'text-success' : 'text-danger'}`}>
@@ -373,7 +374,7 @@ export function InteractiveDashboardSwitcher({ onOpenPilotModal }) {
                       <h5 className="fw-bold mb-1">Personalized Daily Schedule Timeline</h5>
                       <span className="small text-muted font-mono">TODAY: MONDAY, AUTUMN SEMESTER</span>
                     </div>
-                    <span className="badge bg-primary-subtle text-primary border border-primary-subtle font-mono">
+                    <span className="badge bg-primary bg-opacity-15 text-cyan border border-info border-opacity-30 font-mono">
                       WEEK 9 • ON SCHEDULE
                     </span>
                   </div>
@@ -381,13 +382,13 @@ export function InteractiveDashboardSwitcher({ onOpenPilotModal }) {
                   <div className="d-flex flex-column gap-3">
                     {/* Item 1 */}
                     <div className="timeline-item">
-                      <div className="timeline-dot" style={{ backgroundColor: 'var(--nf-success)' }}></div>
+                      <div className="timeline-dot" style={{ backgroundColor: 'var(--nf-success)', boxShadow: '0 0 10px var(--nf-success)' }}></div>
                       <div className="p-3 rounded-3 card-enterprise mb-2">
                         <div className="d-flex justify-content-between align-items-center">
-                          <span className="fw-bold small">09:00 - 10:00 AM • Lecture Hall 102</span>
+                          <span className="fw-bold small font-mono">09:00 - 10:00 AM • Lecture Hall 102</span>
                           <span className="badge bg-success-subtle text-success">Attended</span>
                         </div>
-                        <h6 className="fw-bold text-primary mt-1 mb-1">CS-302: Database Management Systems</h6>
+                        <h6 className="fw-bold text-cyan mt-1 mb-1">CS-302: Database Management Systems</h6>
                         <div className="small text-muted d-flex align-items-center gap-2">
                           <span>Instructor: Dr. B. K. Patel</span>
                           <span>• Topic: B+ Tree Indexing</span>
@@ -397,10 +398,10 @@ export function InteractiveDashboardSwitcher({ onOpenPilotModal }) {
 
                     {/* Item 2: Active / Current */}
                     <div className="timeline-item">
-                      <div className="timeline-dot" style={{ backgroundColor: 'var(--nf-primary)' }}></div>
-                      <div className="p-3 rounded-3 card-enterprise mb-2 border-primary border-opacity-50" style={{ background: 'rgba(59, 130, 246, 0.06)' }}>
+                      <div className="timeline-dot" style={{ backgroundColor: '#38bdf8', boxShadow: '0 0 14px #38bdf8' }}></div>
+                      <div className="p-3 rounded-3 card-enterprise mb-2 border-glow-cyan" style={{ background: 'rgba(56, 189, 248, 0.08)' }}>
                         <div className="d-flex justify-content-between align-items-center">
-                          <span className="fw-bold small text-primary d-flex align-items-center gap-1">
+                          <span className="fw-bold small text-cyan d-flex align-items-center gap-1 font-mono">
                             <span className="pulsing-dot" style={{ width: '6px', height: '6px' }}></span>
                             11:30 AM - 01:00 PM • Annex Lab 304 (Updated)
                           </span>
@@ -419,7 +420,7 @@ export function InteractiveDashboardSwitcher({ onOpenPilotModal }) {
                       <div className="timeline-dot" style={{ backgroundColor: 'var(--nf-text-muted)' }}></div>
                       <div className="p-3 rounded-3 card-enterprise mb-2">
                         <div className="d-flex justify-content-between align-items-center">
-                          <span className="fw-bold small text-muted">02:30 - 03:30 PM • Seminar Hall B</span>
+                          <span className="fw-bold small text-muted font-mono">02:30 - 03:30 PM • Seminar Hall B</span>
                           <span className="badge bg-secondary-subtle text-secondary">Upcoming</span>
                         </div>
                         <h6 className="fw-bold mt-1 mb-1">EC-204: Signals & Digital Systems (Open Elective)</h6>
@@ -440,7 +441,7 @@ export function InteractiveDashboardSwitcher({ onOpenPilotModal }) {
                   <div className="p-4 rounded-4" style={{ background: 'var(--nf-bg-surface)', border: '1px solid var(--nf-border)' }}>
                     <div className="d-flex align-items-center justify-content-between mb-3">
                       <h5 className="fw-bold mb-0">Attendance Health Test</h5>
-                      <span className="badge bg-primary-subtle text-primary font-mono">REGISTRY SIMULATOR</span>
+                      <span className="badge bg-primary bg-opacity-20 text-cyan font-mono" style={{ fontSize: '0.7rem' }}>REGISTRY SIMULATOR</span>
                     </div>
                     <p className="small text-muted mb-3">
                       Drag the slider below to simulate student attendance health and see how NexusFlow automatically enforces the mandatory 75% UGC exam cutoff policy.
@@ -448,7 +449,7 @@ export function InteractiveDashboardSwitcher({ onOpenPilotModal }) {
 
                     <label className="form-label d-flex justify-content-between small font-mono">
                       <span>Simulated Attendance:</span>
-                      <strong className={attendanceHealth >= 75 ? 'text-success' : 'text-danger'}>{attendanceHealth}%</strong>
+                      <strong className={`fs-6 ${attendanceHealth >= 75 ? 'text-success' : 'text-danger'}`}>{attendanceHealth}%</strong>
                     </label>
                     <input
                       type="range"
@@ -489,17 +490,17 @@ export function InteractiveDashboardSwitcher({ onOpenPilotModal }) {
                     <div className="d-flex flex-column gap-2">
                       <div className="d-flex justify-content-between align-items-center p-2 rounded-2" style={{ background: 'var(--nf-bg-card)', border: '1px solid var(--nf-border)' }}>
                         <div className="d-flex align-items-center gap-2">
-                          <BookOpen size={16} className="text-primary" />
+                          <BookOpen size={16} className="text-cyan" />
                           <span className="small fw-semibold">CS-301: Lab Manual v2.4</span>
                         </div>
-                        <span className="badge bg-primary text-white" style={{ fontSize: '0.7rem' }}>PDF (3.2 MB)</span>
+                        <span className="badge bg-primary text-white font-mono" style={{ fontSize: '0.7rem' }}>PDF (3.2 MB)</span>
                       </div>
                       <div className="d-flex justify-content-between align-items-center p-2 rounded-2" style={{ background: 'var(--nf-bg-card)', border: '1px solid var(--nf-border)' }}>
                         <div className="d-flex align-items-center gap-2">
-                          <BookOpen size={16} className="text-primary" />
+                          <BookOpen size={16} className="text-cyan" />
                           <span className="small fw-semibold">CS-302: Query Optimization Notes</span>
                         </div>
-                        <span className="badge bg-primary text-white" style={{ fontSize: '0.7rem' }}>PDF (1.8 MB)</span>
+                        <span className="badge bg-primary text-white font-mono" style={{ fontSize: '0.7rem' }}>PDF (1.8 MB)</span>
                       </div>
                     </div>
                   </div>
@@ -521,4 +522,3 @@ export function InteractiveDashboardSwitcher({ onOpenPilotModal }) {
   );
 }
 export default InteractiveDashboardSwitcher;
-

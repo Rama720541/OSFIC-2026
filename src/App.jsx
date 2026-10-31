@@ -11,12 +11,15 @@ import SecurityArchitecture from './components/SecurityArchitecture';
 import Footer from './components/Footer';
 import PilotModal from './components/PilotModal';
 import LoginModal from './components/LoginModal';
+import RegisterModal from './components/RegisterModal';
 
 export function App() {
   const [theme, setTheme] = useState('dark');
   const [isPilotModalOpen, setIsPilotModalOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
   const [loginRole, setLoginRole] = useState('Teacher');
+  const [registerRole, setRegisterRole] = useState('Institution');
 
   // Initialize and synchronize theme with document data-bs-theme
   useEffect(() => {
@@ -34,6 +37,13 @@ export function App() {
   const handleOpenLoginModal = (role = 'Teacher') => {
     setLoginRole(role);
     setIsLoginModalOpen(true);
+    setIsRegisterModalOpen(false);
+  };
+
+  const handleOpenRegisterModal = (role = 'Institution') => {
+    setRegisterRole(role);
+    setIsRegisterModalOpen(true);
+    setIsLoginModalOpen(false);
   };
 
   const handleScrollToDemo = () => {
@@ -51,6 +61,7 @@ export function App() {
         toggleTheme={toggleTheme}
         onOpenPilotModal={handleOpenPilotModal}
         onOpenLoginModal={handleOpenLoginModal}
+        onOpenRegisterModal={handleOpenRegisterModal}
       />
 
       <main className="flex-grow-1">
@@ -63,7 +74,7 @@ export function App() {
         {/* 2. Flagship Capabilities Bootstrap Carousel */}
         <BootstrapCarousel onOpenPilotModal={handleOpenPilotModal} />
 
-        {/* 3. Problem vs Solution Grid */}
+        {/* 3. Problem vs Solution Grid (Dual Dark/Light Optimized) */}
         <ProblemSolutionGrid onOpenPilotModal={handleOpenPilotModal} />
 
         {/* 4. Core Product Modules Showcase */}
@@ -99,9 +110,16 @@ export function App() {
         initialRole={loginRole}
         onClose={() => setIsLoginModalOpen(false)}
         onSwitchToDashboard={() => handleScrollToDemo()}
+        onSwitchToRegister={() => handleOpenRegisterModal('Institution')}
+      />
+
+      <RegisterModal
+        isOpen={isRegisterModalOpen}
+        initialRole={registerRole}
+        onClose={() => setIsRegisterModalOpen(false)}
+        onSwitchToLogin={() => handleOpenLoginModal('Teacher')}
       />
     </div>
   );
 }
 export default App;
-

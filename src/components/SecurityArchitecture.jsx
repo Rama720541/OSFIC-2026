@@ -7,7 +7,7 @@ export function SecurityArchitecture() {
       title: "Multi-Tenant Isolation",
       tagline: "Cryptographically isolated data stores for each institution",
       desc: "Every college operates within an isolated tenant workspace. Student records, exam rosters, and faculty leave archives are isolated via schema-level separation with AES-256 at-rest encryption.",
-      icon: <Database className="text-primary" size={26} />,
+      icon: <Database className="text-cyan" size={26} />,
       badge: "ISO / IEC 27001"
     },
     {
@@ -28,7 +28,7 @@ export function SecurityArchitecture() {
       title: "99.98% High Availability SLA",
       tagline: "Resilient cloud clusters with multi-zone redundancy",
       desc: "Engineered to withstand registration day spikes when 20,000+ students access semester schedules simultaneously. Hosted on sovereign Indian data center infrastructure.",
-      icon: <Server className="text-info" size={26} />,
+      icon: <Server className="text-cyan" size={26} />,
       badge: "MEITY COMPLIANT"
     }
   ];
@@ -38,10 +38,11 @@ export function SecurityArchitecture() {
       <div className="container py-4">
         {/* Section Header */}
         <div className="text-center mb-5">
-          <span className="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill px-3 py-1 fw-bold text-uppercase" style={{ fontSize: '0.75rem' }}>
+          <span className="badge-osfic text-uppercase font-mono mb-2" style={{ fontSize: '0.72rem' }}>
+            <Cpu size={14} className="text-cyan" />
             Enterprise Trust & Resilience
           </span>
-          <h2 className="display-6 fw-bold mt-3 mb-2">
+          <h2 className="display-6 fw-bold mt-2 mb-2">
             Bank-Grade Security for <span className="text-gradient-primary">University Data</span>
           </h2>
           <p className="text-muted mx-auto" style={{ maxWidth: '640px' }}>
@@ -64,7 +65,7 @@ export function SecurityArchitecture() {
                     </span>
                   </div>
                   <h4 className="fw-bold mb-1">{item.title}</h4>
-                  <div className="text-primary small fw-semibold mb-3 font-mono">{item.tagline}</div>
+                  <div className="text-cyan small fw-semibold mb-3 font-mono">{item.tagline}</div>
                   <p className="text-muted small mb-0" style={{ lineHeight: 1.6 }}>
                     {item.desc}
                   </p>
@@ -75,19 +76,19 @@ export function SecurityArchitecture() {
         </div>
 
         {/* Technical Architecture Snapshot */}
-        <div className="p-4 rounded-4 card-enterprise" style={{ background: 'var(--nf-bg-surface)' }}>
+        <div className="p-4 rounded-4 card-enterprise border-glow-cyan" style={{ background: 'var(--nf-bg-surface)' }}>
           <div className="row align-items-center g-4">
             <div className="col-md-3 text-center text-md-start">
-              <span className="fw-bold font-mono small text-muted">STACK HIGHLIGHTS</span>
+              <span className="fw-bold font-mono small text-cyan">STACK HIGHLIGHTS</span>
               <h5 className="fw-bold mb-0 mt-1">Enterprise Architecture</h5>
             </div>
             <div className="col-md-9">
               <div className="d-flex flex-wrap gap-2 justify-content-center justify-content-md-start">
-                <span className="badge bg-dark-subtle text-body border p-2 px-3 font-mono">FastAPI / Python Constraint Solvers</span>
-                <span className="badge bg-dark-subtle text-body border p-2 px-3 font-mono">React 18 + WebSockets Mesh</span>
-                <span className="badge bg-dark-subtle text-body border p-2 px-3 font-mono">PostgreSQL with Row-Level Security (RLS)</span>
-                <span className="badge bg-dark-subtle text-body border p-2 px-3 font-mono">Redis Cache for Sub-10ms Scheduling Queries</span>
-                <span className="badge bg-dark-subtle text-body border p-2 px-3 font-mono">Indian Cloud Sovereignty (AWS Mumbai / NIC)</span>
+                <span className="badge bg-dark-subtle text-body border p-2 px-3 font-mono" style={{ borderColor: 'var(--nf-border)' }}>FastAPI / Python Constraint Solvers</span>
+                <span className="badge bg-dark-subtle text-body border p-2 px-3 font-mono" style={{ borderColor: 'var(--nf-border)' }}>React 18 + WebSockets Mesh</span>
+                <span className="badge bg-dark-subtle text-body border p-2 px-3 font-mono" style={{ borderColor: 'var(--nf-border)' }}>PostgreSQL with Row-Level Security (RLS)</span>
+                <span className="badge bg-dark-subtle text-body border p-2 px-3 font-mono" style={{ borderColor: 'var(--nf-border)' }}>Redis Cache for Sub-10ms Queries</span>
+                <span className="badge bg-dark-subtle text-body border p-2 px-3 font-mono" style={{ borderColor: 'var(--nf-border)' }}>Indian Cloud Sovereignty (AWS Mumbai / NIC)</span>
               </div>
             </div>
           </div>
@@ -97,4 +98,3 @@ export function SecurityArchitecture() {
   );
 }
 export default SecurityArchitecture;
-

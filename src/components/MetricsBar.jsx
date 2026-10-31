@@ -1,5 +1,5 @@
 import React from 'react';
-import { Target, Zap, Shield, FileCheck, Award, ArrowUpRight, CheckCircle } from 'lucide-react';
+import { Target, Zap, Shield, FileCheck, Award, ArrowUpRight, CheckCircle, Cpu } from 'lucide-react';
 
 export function MetricsBar({ onOpenPilotModal }) {
   const metrics = [
@@ -7,7 +7,7 @@ export function MetricsBar({ onOpenPilotModal }) {
       value: "0%",
       label: "Hard-Constraint Collision Rate",
       description: "Zero overlapping schedules across professors, student batches, and laboratory venues.",
-      icon: <Target className="text-primary" size={24} />
+      icon: <Target className="text-cyan" size={24} />
     },
     {
       value: "85%",
@@ -25,7 +25,7 @@ export function MetricsBar({ onOpenPilotModal }) {
       value: "Instant",
       label: "Real-Time Institutional Audit Logs",
       description: "One-click generation of NAAC, NBA & NIRF compliant course execution diaries.",
-      icon: <FileCheck className="text-info" size={24} />
+      icon: <FileCheck className="text-cyan" size={24} />
     }
   ];
 
@@ -42,7 +42,7 @@ export function MetricsBar({ onOpenPilotModal }) {
                     <div className="p-2 rounded-3" style={{ background: 'var(--nf-bg-surface)', border: '1px solid var(--nf-border)' }}>
                       {m.icon}
                     </div>
-                    <span className="badge bg-primary-subtle text-primary font-mono" style={{ fontSize: '0.65rem' }}>
+                    <span className="badge bg-primary bg-opacity-15 text-cyan border border-info border-opacity-30 font-mono" style={{ fontSize: '0.65rem' }}>
                       AUDITED
                     </span>
                   </div>
@@ -60,22 +60,22 @@ export function MetricsBar({ onOpenPilotModal }) {
         </div>
 
         {/* 1 Crore Fund Deployment Note */}
-        <div className="p-4 rounded-4 card-enterprise border-primary border-opacity-30 position-relative" style={{ background: 'rgba(59, 130, 246, 0.03)' }}>
+        <div className="p-4 rounded-4 card-enterprise border-glow-cyan shadow-xl position-relative" style={{ background: 'rgba(13, 22, 48, 0.85)' }}>
           <div className="row align-items-center g-4">
             <div className="col-lg-8">
               <div className="d-flex align-items-center gap-2 mb-2">
-                <span className="badge bg-primary text-white font-mono px-3 py-1">
+                <span className="badge font-mono px-3 py-1" style={{ background: 'linear-gradient(135deg, #0284c7, #2563eb)', color: '#fff', fontSize: '0.72rem' }}>
                   ₹1 CRORE VENTURE MANDATE
                 </span>
-                <span className="text-muted small">OSFIC 2026 Academic Innovation Fund</span>
+                <span className="text-muted small font-mono">OSFIC 2026 Academic Innovation Fund</span>
               </div>
               <h4 className="fw-bold mb-2">Built to Scale Across 120+ Higher Education Campuses</h4>
               <p className="text-muted small mb-0" style={{ maxWidth: '680px' }}>
-                The ₹1 Crore institutional capital injection funds the statewide rollout across Odisha's technical universities (VSSUT, OUTR, BPUT affiliates), multi-lingual faculty voice-agents, and high-performance GPU-accelerated CSP scheduling clusters.
+                The ₹1 Crore institutional capital injection funds statewide rollout across technical universities, multi-lingual faculty voice-agents, and high-performance GPU-accelerated CSP scheduling clusters.
               </p>
             </div>
             <div className="col-lg-4 text-lg-end">
-              <button onClick={onOpenPilotModal} className="btn btn-primary-enterprise d-inline-flex align-items-center gap-2">
+              <button onClick={onOpenPilotModal} className="btn btn-primary-enterprise d-inline-flex align-items-center gap-2 glow-blue">
                 <span>View Venture Pitch Deck</span>
                 <ArrowUpRight size={16} />
               </button>
@@ -87,4 +87,3 @@ export function MetricsBar({ onOpenPilotModal }) {
   );
 }
 export default MetricsBar;
-

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Calendar, RefreshCw, QrCode, Sliders, CheckCircle2, ArrowRight, Layers, Sparkles, Building2, BellRing, BarChart3 } from 'lucide-react';
+import { Calendar, RefreshCw, QrCode, Sliders, CheckCircle2, ArrowRight, Layers, Sparkles, Building2, BellRing, BarChart3, Cpu } from 'lucide-react';
 
 export function CoreModulesShowcase({ onOpenPilotModal }) {
   const [activeModule, setActiveModule] = useState(0);
@@ -9,7 +9,7 @@ export function CoreModulesShowcase({ onOpenPilotModal }) {
       id: "smart-generator",
       title: "Smart Timetable Generator",
       tagline: "Runs hard and soft constraint algorithms to generate conflict-free semester schedules in minutes.",
-      icon: <Calendar className="text-primary" size={28} />,
+      icon: <Calendar className="text-cyan" size={28} />,
       kpi: "< 4 Min Run Time",
       features: [
         "Simultaneous multi-objective CSP (Constraint Satisfaction Problem) optimization",
@@ -66,7 +66,7 @@ export function CoreModulesShowcase({ onOpenPilotModal }) {
       id: "room-optimizer",
       title: "Room & Lab Optimizer",
       tagline: "Prevents underutilization by matching section headcounts with exact facility capacities.",
-      icon: <Sliders className="text-info" size={28} />,
+      icon: <Sliders className="text-cyan" size={28} />,
       kpi: "+42% Yield Boost",
       features: [
         "Headcount-to-capacity matrix matching ensures small electives don't block large lecture halls",
@@ -88,10 +88,11 @@ export function CoreModulesShowcase({ onOpenPilotModal }) {
       <div className="container py-4">
         {/* Section Header */}
         <div className="text-center mb-5">
-          <span className="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill px-3 py-1 fw-bold text-uppercase" style={{ fontSize: '0.75rem' }}>
+          <span className="badge-osfic text-uppercase font-mono mb-2" style={{ fontSize: '0.72rem' }}>
+            <Cpu size={14} className="text-cyan" />
             Enterprise Architecture
           </span>
-          <h2 className="display-6 fw-bold mt-3 mb-2">
+          <h2 className="display-6 fw-bold mt-2 mb-2">
             Engineered for <span className="text-gradient-primary">Campus-Scale Precision</span>
           </h2>
           <p className="text-muted mx-auto" style={{ maxWidth: '640px' }}>
@@ -104,7 +105,7 @@ export function CoreModulesShowcase({ onOpenPilotModal }) {
           {modules.map((mod, idx) => (
             <div key={mod.id} className="col-md-6 col-lg-3">
               <div
-                className={`card-enterprise p-4 h-100 d-flex flex-column justify-content-between position-relative ${activeModule === idx ? 'border-primary' : ''}`}
+                className={`card-enterprise p-4 h-100 d-flex flex-column justify-content-between position-relative ${activeModule === idx ? 'border-glow-cyan' : ''}`}
                 style={{ cursor: 'pointer' }}
                 onClick={() => setActiveModule(idx)}
               >
@@ -125,13 +126,13 @@ export function CoreModulesShowcase({ onOpenPilotModal }) {
 
                   <div className="p-2 rounded-2 mb-3 d-flex justify-content-between align-items-center" style={{ background: 'var(--nf-bg-surface)' }}>
                     <span className="text-muted" style={{ fontSize: '0.75rem' }}>Benchmark KPI:</span>
-                    <span className="fw-bold text-primary font-mono" style={{ fontSize: '0.85rem' }}>{mod.kpi}</span>
+                    <span className="fw-bold text-cyan font-mono" style={{ fontSize: '0.85rem' }}>{mod.kpi}</span>
                   </div>
 
                   <ul className="list-unstyled mb-0">
                     {mod.features.slice(0, 2).map((feat, fIdx) => (
                       <li key={fIdx} className="d-flex align-items-start gap-2 mb-2 text-muted" style={{ fontSize: '0.8rem' }}>
-                        <CheckCircle2 size={14} className="text-primary flex-shrink-0 mt-1" />
+                        <CheckCircle2 size={14} className="text-cyan flex-shrink-0 mt-1" />
                         <span>{feat}</span>
                       </li>
                     ))}
@@ -140,7 +141,7 @@ export function CoreModulesShowcase({ onOpenPilotModal }) {
 
                 <div className="pt-3 mt-3 border-top" style={{ borderColor: 'var(--nf-border)' }}>
                   <button
-                    className={`btn w-100 btn-sm py-2 d-flex align-items-center justify-content-center gap-1 ${activeModule === idx ? 'btn-primary' : 'btn-outline-enterprise'}`}
+                    className={`btn w-100 btn-sm py-2 d-flex align-items-center justify-content-center gap-1 ${activeModule === idx ? 'btn-primary-enterprise' : 'btn-outline-enterprise'}`}
                   >
                     <span>{activeModule === idx ? 'Active Architecture View' : 'Explore Deep Dive'}</span>
                     <ArrowRight size={14} />
@@ -152,14 +153,14 @@ export function CoreModulesShowcase({ onOpenPilotModal }) {
         </div>
 
         {/* Selected Module Interactive Deep Dive Panel */}
-        <div className="mt-5 p-4 p-md-5 rounded-4 card-enterprise border-primary border-opacity-30 position-relative">
+        <div className="mt-5 p-4 p-md-5 rounded-4 card-enterprise border-glow-cyan shadow-2xl position-relative">
           <div className="row align-items-center g-4">
             <div className="col-lg-7">
               <div className="d-flex align-items-center gap-2 mb-2">
-                <span className="badge bg-primary text-white font-mono px-3 py-1">
+                <span className="badge font-mono px-3 py-1" style={{ background: 'linear-gradient(135deg, #0284c7, #2563eb)', color: '#fff' }}>
                   MODULE {activeModule + 1} DEEP DIVE
                 </span>
-                <span className="text-muted small">• Integrated with OSFIC PS-040 Spec</span>
+                <span className="text-muted small font-mono">• Integrated with OSFIC PS-040 Spec</span>
               </div>
               <h3 className="display-6 fw-bold mb-3">{modules[activeModule].title}</h3>
               <p className="lead text-muted fs-6 mb-4">{modules[activeModule].tagline}</p>
@@ -169,7 +170,7 @@ export function CoreModulesShowcase({ onOpenPilotModal }) {
                   <div key={idx} className="col-md-6">
                     <div className="p-3 rounded-3 h-100" style={{ background: 'var(--nf-bg-surface)', border: '1px solid var(--nf-border)' }}>
                       <div className="d-flex align-items-start gap-2">
-                        <CheckCircle2 size={16} className="text-primary flex-shrink-0 mt-1" />
+                        <CheckCircle2 size={16} className="text-cyan flex-shrink-0 mt-1" />
                         <span className="small">{feat}</span>
                       </div>
                     </div>
@@ -177,7 +178,7 @@ export function CoreModulesShowcase({ onOpenPilotModal }) {
                 ))}
               </div>
 
-              <button onClick={onOpenPilotModal} className="btn btn-primary-enterprise d-inline-flex align-items-center gap-2">
+              <button onClick={onOpenPilotModal} className="btn btn-primary-enterprise d-inline-flex align-items-center gap-2 glow-blue">
                 <span>Deploy {modules[activeModule].title} on Campus</span>
                 <ArrowRight size={16} />
               </button>
@@ -186,7 +187,7 @@ export function CoreModulesShowcase({ onOpenPilotModal }) {
             <div className="col-lg-5">
               <div className="p-4 rounded-4 shadow-sm" style={{ background: 'var(--nf-bg-surface)', border: '1px solid var(--nf-border)' }}>
                 <div className="d-flex justify-content-between align-items-center mb-3">
-                  <span className="fw-bold small font-mono text-primary">LIVE SIMULATED METRICS</span>
+                  <span className="fw-bold small font-mono text-cyan">LIVE SIMULATED METRICS</span>
                   <span className="pulsing-dot"></span>
                 </div>
 
@@ -194,14 +195,14 @@ export function CoreModulesShowcase({ onOpenPilotModal }) {
                   {modules[activeModule].previewStats.map((stat, sIdx) => (
                     <div key={sIdx} className="p-3 rounded-3 d-flex justify-content-between align-items-center" style={{ background: 'var(--nf-bg-card)', border: '1px solid var(--nf-border)' }}>
                       <span className="small text-muted">{stat.label}</span>
-                      <span className="fw-bolder fs-5 text-primary font-mono">{stat.val}</span>
+                      <span className="fw-bolder fs-5 text-cyan font-mono">{stat.val}</span>
                     </div>
                   ))}
                 </div>
 
-                <div className="mt-3 p-3 rounded-3" style={{ background: 'rgba(59, 130, 246, 0.08)', border: '1px dashed var(--nf-border-bright)' }}>
+                <div className="mt-3 p-3 rounded-3" style={{ background: 'rgba(56, 189, 248, 0.08)', border: '1px dashed var(--nf-border-bright)' }}>
                   <div className="small text-muted">
-                    <strong>Enterprise Sandbox Note:</strong> This module runs natively inside existing college databases without requiring overhaul of existing legacy student ERPs.
+                    <strong className="text-cyan">Enterprise Sandbox Note:</strong> This module runs natively inside existing college databases without requiring overhaul of existing legacy student ERPs.
                   </div>
                 </div>
               </div>
@@ -213,4 +214,3 @@ export function CoreModulesShowcase({ onOpenPilotModal }) {
   );
 }
 export default CoreModulesShowcase;
-

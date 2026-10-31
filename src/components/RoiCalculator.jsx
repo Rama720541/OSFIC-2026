@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Calculator, TrendingUp, IndianRupee, Clock, Building, ShieldCheck, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { Calculator, TrendingUp, IndianRupee, Clock, Building, ShieldCheck, ArrowRight, CheckCircle2, Cpu } from 'lucide-react';
 
 export function RoiCalculator({ onOpenPilotModal }) {
   const [students, setStudents] = useState(6500);
@@ -17,10 +17,11 @@ export function RoiCalculator({ onOpenPilotModal }) {
       <div className="container py-4">
         {/* Header */}
         <div className="text-center mb-5">
-          <span className="badge bg-success-subtle text-success border border-success-subtle rounded-pill px-3 py-1 fw-bold text-uppercase" style={{ fontSize: '0.75rem' }}>
+          <span className="badge-osfic text-uppercase font-mono mb-2" style={{ fontSize: '0.72rem' }}>
+            <Cpu size={14} className="text-cyan" />
             Institutional ROI & Space Economics
           </span>
-          <h2 className="display-6 fw-bold mt-3 mb-2">
+          <h2 className="display-6 fw-bold mt-2 mb-2">
             Calculate Your Campus <span className="text-gradient-accent">Financial & Time Savings</span>
           </h2>
           <p className="text-muted mx-auto" style={{ maxWidth: '640px' }}>
@@ -28,12 +29,14 @@ export function RoiCalculator({ onOpenPilotModal }) {
           </p>
         </div>
 
-        <div className="card-enterprise p-4 p-md-5 border-success border-opacity-30 shadow-lg">
+        <div className="card-enterprise p-4 p-md-5 border-glow-cyan shadow-2xl">
           <div className="row g-5 align-items-center">
             {/* Left: Interactive Controls */}
             <div className="col-lg-6">
               <div className="d-flex align-items-center gap-2 mb-4">
-                <Calculator size={22} className="text-success" />
+                <div className="p-2 rounded-3" style={{ background: 'rgba(56, 189, 248, 0.15)' }}>
+                  <Calculator size={22} className="text-cyan" />
+                </div>
                 <h4 className="fw-bold mb-0">Campus Scale Parameters</h4>
               </div>
 
@@ -41,7 +44,9 @@ export function RoiCalculator({ onOpenPilotModal }) {
               <div className="mb-4">
                 <div className="d-flex justify-content-between align-items-center mb-2">
                   <label className="fw-semibold small">Total Enrolled Students</label>
-                  <span className="badge bg-primary font-mono fs-6">{students.toLocaleString('en-IN')} Students</span>
+                  <span className="badge rounded-pill px-3 py-1 font-mono fs-6" style={{ background: 'linear-gradient(135deg, #0284c7, #2563eb)', color: '#ffffff', boxShadow: '0 0 10px rgba(56, 189, 248, 0.3)' }}>
+                    {students.toLocaleString('en-IN')} Students
+                  </span>
                 </div>
                 <input
                   type="range"
@@ -52,7 +57,7 @@ export function RoiCalculator({ onOpenPilotModal }) {
                   value={students}
                   onChange={(e) => setStudents(parseInt(e.target.value))}
                 />
-                <div className="d-flex justify-content-between text-muted" style={{ fontSize: '0.75rem' }}>
+                <div className="d-flex justify-content-between text-muted font-mono" style={{ fontSize: '0.72rem' }}>
                   <span>1,000 (Small College)</span>
                   <span>12,000 (State University)</span>
                   <span>25,000+ (Multi-Campus)</span>
@@ -63,7 +68,9 @@ export function RoiCalculator({ onOpenPilotModal }) {
               <div className="mb-4">
                 <div className="d-flex justify-content-between align-items-center mb-2">
                   <label className="fw-semibold small">Full-Time Faculty Members</label>
-                  <span className="badge bg-primary font-mono fs-6">{faculty} Professors</span>
+                  <span className="badge rounded-pill px-3 py-1 font-mono fs-6" style={{ background: 'linear-gradient(135deg, #0284c7, #2563eb)', color: '#ffffff', boxShadow: '0 0 10px rgba(56, 189, 248, 0.3)' }}>
+                    {faculty} Professors
+                  </span>
                 </div>
                 <input
                   type="range"
@@ -74,7 +81,7 @@ export function RoiCalculator({ onOpenPilotModal }) {
                   value={faculty}
                   onChange={(e) => setFaculty(parseInt(e.target.value))}
                 />
-                <div className="d-flex justify-content-between text-muted" style={{ fontSize: '0.75rem' }}>
+                <div className="d-flex justify-content-between text-muted font-mono" style={{ fontSize: '0.72rem' }}>
                   <span>50 Faculty</span>
                   <span>500 Faculty</span>
                   <span>1,200+ Faculty</span>
@@ -85,7 +92,9 @@ export function RoiCalculator({ onOpenPilotModal }) {
               <div className="mb-4">
                 <div className="d-flex justify-content-between align-items-center mb-2">
                   <label className="fw-semibold small">Lecture Theatres, Labs & Auditoriums</label>
-                  <span className="badge bg-primary font-mono fs-6">{rooms} Venues</span>
+                  <span className="badge rounded-pill px-3 py-1 font-mono fs-6" style={{ background: 'linear-gradient(135deg, #0284c7, #2563eb)', color: '#ffffff', boxShadow: '0 0 10px rgba(56, 189, 248, 0.3)' }}>
+                    {rooms} Venues
+                  </span>
                 </div>
                 <input
                   type="range"
@@ -96,7 +105,7 @@ export function RoiCalculator({ onOpenPilotModal }) {
                   value={rooms}
                   onChange={(e) => setRooms(parseInt(e.target.value))}
                 />
-                <div className="d-flex justify-content-between text-muted" style={{ fontSize: '0.75rem' }}>
+                <div className="d-flex justify-content-between text-muted font-mono" style={{ fontSize: '0.72rem' }}>
                   <span>20 Venues</span>
                   <span>120 Venues</span>
                   <span>250+ Venues</span>
@@ -105,7 +114,7 @@ export function RoiCalculator({ onOpenPilotModal }) {
 
               <div className="p-3 rounded-3" style={{ background: 'var(--nf-bg-surface)', border: '1px solid var(--nf-border)' }}>
                 <div className="small text-muted">
-                  <strong>OSFIC PS-040 Formula:</strong> Evaluates timetable coordination man-hours, idle classroom HVAC electricity wastage, and proxy teacher misallocation rates across 2 academic semesters.
+                  <strong className="text-cyan">OSFIC PS-040 Formula:</strong> Evaluates timetable coordination man-hours, idle classroom HVAC electricity wastage, and proxy teacher misallocation rates across 2 academic semesters.
                 </div>
               </div>
             </div>
@@ -113,17 +122,19 @@ export function RoiCalculator({ onOpenPilotModal }) {
             {/* Right: Output Value Cards */}
             <div className="col-lg-6">
               <div className="p-4 rounded-4" style={{ background: 'var(--nf-bg-surface)', border: '1px solid var(--nf-border)' }}>
-                <span className="badge bg-success text-white font-mono mb-3">ANNUAL ECONOMIC YIELD</span>
+                <span className="badge bg-success bg-opacity-20 text-success border border-success border-opacity-30 font-mono mb-3" style={{ fontSize: '0.72rem' }}>
+                  ANNUAL ECONOMIC YIELD
+                </span>
 
                 <div className="row g-3 mb-4">
                   {/* Metric 1 */}
                   <div className="col-sm-6">
-                    <div className="p-3 rounded-3 h-100" style={{ background: 'var(--nf-bg-card)', border: '1px solid var(--nf-border)' }}>
+                    <div className="p-3 rounded-3 h-100 card-enterprise" style={{ background: 'var(--nf-bg-card)', border: '1px solid var(--nf-border)' }}>
                       <div className="d-flex align-items-center gap-2 text-muted small mb-1">
-                        <Clock size={16} className="text-primary" />
+                        <Clock size={16} className="text-cyan" />
                         <span>Coordination Hours Saved</span>
                       </div>
-                      <div className="fw-extrabold fs-3 text-primary font-mono">
+                      <div className="fw-extrabold fs-3 text-cyan font-mono">
                         {annualHoursSaved.toLocaleString('en-IN')} <span className="fs-6 fw-normal">Hrs/Yr</span>
                       </div>
                       <div className="text-muted" style={{ fontSize: '0.72rem' }}>Reclaimed for research & NIRF ranking focus</div>
@@ -132,7 +143,7 @@ export function RoiCalculator({ onOpenPilotModal }) {
 
                   {/* Metric 2 */}
                   <div className="col-sm-6">
-                    <div className="p-3 rounded-3 h-100" style={{ background: 'var(--nf-bg-card)', border: '1px solid var(--nf-border)' }}>
+                    <div className="p-3 rounded-3 h-100 card-enterprise" style={{ background: 'var(--nf-bg-card)', border: '1px solid var(--nf-border)' }}>
                       <div className="d-flex align-items-center gap-2 text-muted small mb-1">
                         <IndianRupee size={16} className="text-success" />
                         <span>Direct OPEX Savings</span>
@@ -146,7 +157,7 @@ export function RoiCalculator({ onOpenPilotModal }) {
 
                   {/* Metric 3 */}
                   <div className="col-sm-6">
-                    <div className="p-3 rounded-3 h-100" style={{ background: 'var(--nf-bg-card)', border: '1px solid var(--nf-border)' }}>
+                    <div className="p-3 rounded-3 h-100 card-enterprise" style={{ background: 'var(--nf-bg-card)', border: '1px solid var(--nf-border)' }}>
                       <div className="d-flex align-items-center gap-2 text-muted small mb-1">
                         <Building size={16} className="text-info" />
                         <span>Capacity Utilization</span>
@@ -160,7 +171,7 @@ export function RoiCalculator({ onOpenPilotModal }) {
 
                   {/* Metric 4 */}
                   <div className="col-sm-6">
-                    <div className="p-3 rounded-3 h-100" style={{ background: 'var(--nf-bg-card)', border: '1px solid var(--nf-border)' }}>
+                    <div className="p-3 rounded-3 h-100 card-enterprise" style={{ background: 'var(--nf-bg-card)', border: '1px solid var(--nf-border)' }}>
                       <div className="d-flex align-items-center gap-2 text-muted small mb-1">
                         <TrendingUp size={16} className="text-warning" />
                         <span>Avoided Infra CAPEX</span>
@@ -184,7 +195,7 @@ export function RoiCalculator({ onOpenPilotModal }) {
                   </div>
                 </div>
 
-                <button onClick={onOpenPilotModal} className="btn btn-primary-enterprise w-100 d-flex align-items-center justify-content-center gap-2 py-3 fs-6">
+                <button onClick={onOpenPilotModal} className="btn btn-primary-enterprise w-100 d-flex align-items-center justify-content-center gap-2 py-3 fs-6 glow-blue">
                   <span>Download Full Institutional ROI Audit PDF</span>
                   <ArrowRight size={18} />
                 </button>
@@ -197,4 +208,3 @@ export function RoiCalculator({ onOpenPilotModal }) {
   );
 }
 export default RoiCalculator;
-

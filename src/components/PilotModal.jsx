@@ -31,18 +31,18 @@ export function PilotModal({ isOpen, onClose }) {
   };
 
   return (
-    <div className="modal show d-block" tabIndex="-1" style={{ backgroundColor: 'rgba(0, 0, 0, 0.7)', backdropFilter: 'blur(8px)', zIndex: 1055 }}>
+    <div className="modal show d-block" tabIndex="-1" style={{ backgroundColor: 'rgba(2, 6, 18, 0.8)', backdropFilter: 'blur(12px)', zIndex: 1055 }}>
       <div className="modal-dialog modal-dialog-centered modal-lg">
-        <div className="modal-content card-enterprise p-2 border-primary border-opacity-50 shadow-2xl">
+        <div className="modal-content card-enterprise p-2 border-glow-cyan shadow-2xl">
           {/* Header */}
           <div className="modal-header border-bottom pb-3" style={{ borderColor: 'var(--nf-border)' }}>
             <div className="d-flex align-items-center gap-2">
-              <div className="p-2 rounded-3 bg-primary text-white">
+              <div className="p-2 rounded-3 text-white" style={{ background: 'linear-gradient(135deg, #0284c7, #2563eb)', boxShadow: '0 0 14px rgba(56, 189, 248, 0.4)' }}>
                 <Building2 size={20} />
               </div>
               <div>
                 <h5 className="modal-title fw-bold mb-0">Schedule an Institutional Pilot</h5>
-                <span className="small text-muted font-mono" style={{ fontSize: '0.72rem' }}>
+                <span className="small text-cyan font-mono" style={{ fontSize: '0.72rem' }}>
                   OSFIC PS-040 Priority Deployment Track
                 </span>
               </div>
@@ -64,7 +64,7 @@ export function PilotModal({ isOpen, onClose }) {
                     <input
                       type="text"
                       required
-                      placeholder="e.g. Veer Surendra Sai Univ. of Technology"
+                      placeholder="e.g. State Technical University"
                       className="form-control"
                       value={formData.institution}
                       onChange={(e) => setFormData({ ...formData, institution: e.target.value })}
@@ -103,7 +103,7 @@ export function PilotModal({ isOpen, onClose }) {
                     <input
                       type="email"
                       required
-                      placeholder="dean.academics@vssut.ac.in"
+                      placeholder="dean.academics@univ.ac.in"
                       className="form-control"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -138,7 +138,7 @@ export function PilotModal({ isOpen, onClose }) {
 
                 {/* Modules to include */}
                 <div className="mt-4 pt-3 border-top" style={{ borderColor: 'var(--nf-border)' }}>
-                  <label className="form-label small fw-semibold text-muted font-mono mb-2">MODULES FOR ON-SITE PILOT:</label>
+                  <label className="form-label small fw-semibold text-cyan font-mono mb-2">MODULES FOR ON-SITE PILOT:</label>
                   <div className="row g-2">
                     <div className="col-sm-6">
                       <div className="form-check">
@@ -179,7 +179,7 @@ export function PilotModal({ isOpen, onClose }) {
                   <button type="button" className="btn btn-outline-enterprise" onClick={onClose}>
                     Cancel
                   </button>
-                  <button type="submit" className="btn btn-primary-enterprise d-flex align-items-center gap-2">
+                  <button type="submit" className="btn btn-primary-enterprise d-flex align-items-center gap-2 glow-blue">
                     <Send size={16} />
                     <span>Submit Institutional Request</span>
                   </button>
@@ -187,22 +187,22 @@ export function PilotModal({ isOpen, onClose }) {
               </form>
             ) : (
               <div className="text-center py-4">
-                <div className="rounded-circle bg-success text-white p-3 d-inline-flex mb-3 shadow">
+                <div className="rounded-circle bg-success text-white p-3 d-inline-flex mb-3 shadow" style={{ boxShadow: '0 0 20px rgba(16, 185, 129, 0.4)' }}>
                   <CheckCircle2 size={40} />
                 </div>
                 <h4 className="fw-bold mb-2">Pilot Request Confirmed!</h4>
                 <p className="text-muted small mx-auto mb-4" style={{ maxWidth: '480px' }}>
-                  Thank you, <strong>{formData.officerName || 'Administrator'}</strong>. Your institutional deployment brief for <strong>{formData.institution || 'your university'}</strong> has been registered with priority track <strong>#OSFIC-2026-PILOT-{Math.floor(1000 + Math.random() * 9000)}</strong>.
+                  Thank you, <strong>{formData.officerName || 'Administrator'}</strong>. Your institutional deployment brief for <strong>{formData.institution || 'your university'}</strong> has been registered with priority track <strong className="text-cyan">#OSFIC-2026-PILOT-{Math.floor(1000 + Math.random() * 9000)}</strong>.
                 </p>
                 <div className="p-3 rounded-3 mb-4 mx-auto text-start" style={{ maxWidth: '480px', background: 'var(--nf-bg-surface)', border: '1px solid var(--nf-border)' }}>
-                  <div className="small fw-semibold text-primary mb-1">What happens next:</div>
+                  <div className="small fw-semibold text-cyan mb-1">What happens next:</div>
                   <ul className="small text-muted mb-0 ps-3">
-                    <li>Our Odisha Deployment Team will contact you within 24 hours.</li>
+                    <li>Our Institutional Deployment Team will contact you within 24 hours.</li>
                     <li>We will provision a sandbox tenant for your academic department heads.</li>
                     <li>You will receive the complete OSFIC PS-040 compliance dossier.</li>
                   </ul>
                 </div>
-                <button className="btn btn-primary-enterprise px-4" onClick={handleReset}>
+                <button className="btn btn-primary-enterprise px-4 glow-blue" onClick={handleReset}>
                   Done & Return to Landing Page
                 </button>
               </div>
@@ -214,4 +214,3 @@ export function PilotModal({ isOpen, onClose }) {
   );
 }
 export default PilotModal;
-
